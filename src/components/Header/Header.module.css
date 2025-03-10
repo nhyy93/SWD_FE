@@ -1,0 +1,33 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+}
+
+.menu {
+    flex: 1;
+    justify-content: center;
+}
+
+.auth-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.register {
+    background-color: #1890ff;
+    color: white;
+}
+
+.login {
+    background-color: white;
+    color: #1890ff;
+    border: 1px solid #1890ff;
+}
