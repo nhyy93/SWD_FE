@@ -1,33 +1,89 @@
+/* Header tổng thể */
 .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 0 20px;
+    justify-content: space-between;
+    background-color: #ffffff; /* Màu nền */
+    padding: 15px 40px;
+    height: 70px;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+/* Logo */
 .logo {
-    font-size: 20px;
+    font-size: 24px;
     font-weight: bold;
+    color: rgb(9, 9, 9);
+    font-family: 'Poppins', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Menu */
+.menu {
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+    gap: 25px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu li a {
+    text-decoration: none;
+    color: rgb(4, 4, 4);
+    padding: 8px 15px;
+    transition: background 0.3s ease, color 0.3s ease;
+    border-radius: 5px;
+}
+
+.menu li a:hover {
+    background: #090909;
     color: white;
 }
 
-.menu {
-    flex: 1;
-    justify-content: center;
-}
-
-.auth-buttons {
+/* Căn chỉnh Login & Register */
+.authButtons {
     display: flex;
-    gap: 10px;
+    gap: 12px;
 }
 
+.register, .login {
+    padding: 8px 16px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+/* Nút Register */
 .register {
     background-color: #1890ff;
     color: white;
+    border: 2px solid transparent;
 }
 
+.register:hover {
+    background-color: #090909;
+    border-color: #090909;
+}
+
+/* Nút Login */
 .login {
     background-color: white;
-    color: #1890ff;
-    border: 1px solid #1890ff;
+    color: #090909;
+    border: 2px solid #090909;
+}
+
+.login:hover {
+    background-color: #1890ff;
+    border-color: #1890ff;
 }
