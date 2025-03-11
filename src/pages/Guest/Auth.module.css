@@ -3,54 +3,71 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f4f4f4;
+    background: linear-gradient(to bottom, #2c2c2c, #1a1a1a); /* Chuyển từ xám đậm sang đen */
 }
 
 .authBox {
-    background: white;
+    background: #ffffff;
     padding: 30px;
     border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    width: 320px;
+    box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.1);
+    width: 430px;
     text-align: center;
+    transition: 0.3s ease-in-out;
+}
+
+.authBox:hover {
+    box-shadow: 0px 6px 20px rgba(255, 255, 255, 0.2);
 }
 
 h2 {
     margin-bottom: 20px;
-    font-size: 24px;
-    color: #333;
+    font-size: 26px;
+    font-weight: bold;
+    color: #222222;
+    letter-spacing: 1px;
 }
 
 .input {
     width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
+    padding: 12px;
+    margin: 12px 0;
+    border: 2px solid #444444;
     border-radius: 5px;
+    background: #eeeeee;
+    transition: all 0.3s ease;
+}
+
+.input:focus {
+    border-color: #000;
+    background: #fff;
 }
 
 .submitButton {
     width: 100%;
-    padding: 10px;
-    background-color: #1890ff;
+    padding: 12px;
+    background: #000;
     color: white;
     border: none;
     border-radius: 5px;
-    cursor: pointer;
     font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
 .submitButton:hover {
-    background-color: #40a9ff;
+    background: #222;
 }
 
 .switchAuth {
-    margin-top: 10px;
+    margin-top: 20px;
     font-size: 14px;
+    color: #888;
 }
 
 .switchAuth a {
-    color: #1890ff;
+    color: black;
     text-decoration: none;
     font-weight: bold;
 }
