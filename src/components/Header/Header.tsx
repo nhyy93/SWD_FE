@@ -1,31 +1,34 @@
 import React from "react";
-import { Layout, Menu, Button } from "antd";
-import { HomeOutlined, AppstoreOutlined, ShoppingCartOutlined, InfoCircleOutlined } from "@ant-design/icons";
-import "./Header.module.css";
-
-const { Header } = Layout;
+import { Link } from "react-router-dom";
+import styles from "./Header.module.css"; 
 
 const AppHeader: React.FC = () => {
   return (
-    <Header className="header">
+    <header className={styles.header}>
       {/* Logo */}
-      <div className="logo">CycWorld</div>
+      <div className={styles.logo}>CycWorld</div>
 
       {/* Navigation Menu */}
-      <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["1"]} className="menu">
-        <Menu.Item key="1" icon={<HomeOutlined />}>Home</Menu.Item>
-        <Menu.Item key="2" icon={<AppstoreOutlined />}>Services</Menu.Item>
-        <Menu.Item key="3" icon={<ShoppingCartOutlined />}>Bicycles</Menu.Item>
-        <Menu.Item key="4" icon={<InfoCircleOutlined />}>Accessories</Menu.Item>
-        <Menu.Item key="5">About</Menu.Item>
-      </Menu>
+      <nav>
+        <ul className={styles.menu}>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Services</a></li>
+          <li><a href="#">Bicycles</a></li>
+          <li><a href="#">Accessories</a></li>
+          <li><a href="#">About</a></li>
+        </ul>
+      </nav>
 
       {/* Auth Buttons */}
-      <div className="auth-buttons">
-        <Button type="primary" className="register">Register</Button>
-        <Button type="default" className="login">Login</Button>
+      <div className={styles.authButtons}>
+        <Link to="/login">
+          <button className={styles.login}>Login</button>
+        </Link>
+        <Link to="/register">
+          <button className={styles.register}>Register</button>
+        </Link>
       </div>
-    </Header>
+    </header>
   );
 };
 
