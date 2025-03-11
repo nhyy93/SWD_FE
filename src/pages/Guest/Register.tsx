@@ -5,7 +5,7 @@ import Header from "../../components/Header/Header";
 const Register: React.FC = () => {
   return (
     <div className={styles.authContainer}>
-        <Header />
+      <Header />
       <div className={styles.authBox}>
         <h2>Register</h2>
         <form>

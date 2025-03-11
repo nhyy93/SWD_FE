@@ -1,0 +1,161 @@
+.aboutPage {
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+    background-color: #f8f9fa;
+    padding: 40px 20px;
+}
+
+/* === CONTACT SECTION === */
+.contactSection {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: auto;
+    padding: 60px 0;
+}
+
+.contactText {
+    width: 50%;
+}
+
+.contactText h2 {
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.contactText h3 {
+    font-size: 1.5rem;
+    color: #1890ff;
+}
+
+.contactDescription {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.responseTime {
+    font-size: 0.9rem;
+    color: #888;
+    font-style: italic;
+}
+
+.contactForm {
+    width: 30%;
+    text-align: right;
+}
+
+/* === NEWS SECTION === */
+.newsSection {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: auto;
+    padding: 60px 0;
+}
+
+.newsText {
+    width: 50%;
+}
+
+.newsText h2 {
+    font-size: 2.2rem;
+    font-weight: bold;
+}
+
+.newsButton {
+    padding: 12px 24px;
+    background-color: #1890ff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 15px;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.newsButton:hover {
+    background-color: #40a9ff;
+}
+
+.newsImage img {
+    width: 500px;
+    border-radius: 15px;
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* === BESTSELLERS SECTION === */
+.bestsellersSection {
+    text-align: center;
+    padding: 60px 0;
+    background-color: #fff;
+}
+
+.bestsellersSection h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+
+.bikeGrid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.bikeCard {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
+    width: 260px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.bikeCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.bikeCard img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.bikeCard h3 {
+    font-size: 1.2rem;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.bikeCard p {
+    font-size: 0.9rem;
+    color: #777;
+}
+
+.price {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #1890ff;
+}
+
+.bikeCard button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #1890ff;
+    color: white;
+    cursor: pointer;
+    margin-top: 10px;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: 0.3s;
+}
+
+.bikeCard button:hover {
+    background-color: #40a9ff;
+}

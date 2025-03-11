@@ -13,9 +13,9 @@ const AppHeader: React.FC = () => {
         <ul className={styles.menu}>
           <li><a href="#">Home</a></li>
           <li><a href="#">Services</a></li>
-          <li><a href="#">Bicycles</a></li>
+          <li><Link to="/bicycles">Bicycles</Link></li> 
           <li><a href="#">Accessories</a></li>
-          <li><a href="#">About</a></li>
+          <li><Link to="/about">About</Link></li>
         </ul>
       </nav>
 
