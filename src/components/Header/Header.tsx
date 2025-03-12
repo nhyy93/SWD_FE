@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import styles from "./Header.module.css"; 
+import styles from "./Header.module.css";
 
 const AppHeader: React.FC = () => {
   return (
@@ -11,9 +11,9 @@ const AppHeader: React.FC = () => {
       {/* Navigation Menu */}
       <nav>
         <ul className={styles.menu}>
-          <li><a href="#">Home</a></li>
+          <li><Link to="/">Home</Link></li>
           <li><a href="#">Services</a></li>
-          <li><Link to="/bicycles">Bicycles</Link></li> 
+          <li><Link to="/bicycles">Bicycles</Link></li>
           <li><a href="#">Accessories</a></li>
           <li><Link to="/about">About</Link></li>
         </ul>
