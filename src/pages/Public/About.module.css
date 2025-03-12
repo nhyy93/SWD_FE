@@ -9,83 +9,158 @@
 .contactSection {
     display: flex;
     justify-content: space-between;
+    align-items: flex-start;
     max-width: 1200px;
-    margin: auto;
-    padding: 60px 0;
+    margin: 0 auto;
+    padding: 60px 20px;
+    gap: 2rem;
 }
 
 .contactText {
-    width: 50%;
+    flex: 1;
+    text-align: left;
+}
+
+.contactText .breadcrumbs {
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+    color: #888;
 }
 
 .contactText h2 {
-    font-size: 2.2rem;
+    font-size: 2rem;
     margin-bottom: 10px;
     font-weight: bold;
+    color: #333;
 }
 
 .contactText h3 {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
     color: #1890ff;
 }
 
-.contactDescription {
+.contactText p {
     font-size: 1rem;
     color: #555;
     margin-bottom: 10px;
 }
 
-.responseTime {
+.contactForm {
+    flex: 1;
+    text-align: left;
+    margin-top: 30px;
+}
+
+.contactForm p {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.contactForm .responseTime {
     font-size: 0.9rem;
     color: #888;
     font-style: italic;
+    margin-bottom: 10px;
 }
 
-.contactForm {
-    width: 30%;
-    text-align: right;
+/* ---------------------------
+     Responsive cho màn hình nhỏ
+  ---------------------------- */
+@media (max-width: 768px) {
+    .contactSection {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .contactText,
+    .contactForm {
+        width: 100%;
+        margin-bottom: 20px;
+    }
 }
 
-/* === NEWS SECTION === */
+
+/* ---------------------------
+   News & Stories Section
+---------------------------- */
 .newsSection {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    max-width: 1200px;
-    margin: auto;
+    justify-content: space-between;
     padding: 60px 0;
+    gap: 2rem;
+    margin-left: 230px;
 }
 
 .newsText {
-    width: 50%;
+    flex: 1;
+    max-width: 600px;
 }
 
 .newsText h2 {
-    font-size: 2.2rem;
-    font-weight: bold;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.newsText p {
+    margin-bottom: 15px;
+    line-height: 1.6;
+    color: #333;
 }
 
 .newsButton {
-    padding: 12px 24px;
-    background-color: #1890ff;
-    color: white;
+    margin-top: 20px;
+    background-color: #000;
+    color: #fff;
     border: none;
+    padding: 12px 24px;
     cursor: pointer;
     font-size: 1rem;
-    margin-top: 15px;
-    border-radius: 5px;
-    transition: 0.3s;
+    border-radius: 4px;
 }
 
 .newsButton:hover {
-    background-color: #40a9ff;
+    opacity: 0.8;
+}
+
+.newsImage {
+    flex: 1;
+    display: flex;
+    justify-content: center;
 }
 
 .newsImage img {
-    width: 500px;
-    border-radius: 15px;
-    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
+    width: 70%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-right: 200px;
 }
+
+/* ---------------------------
+     Responsive
+  ---------------------------- */
+@media (max-width: 768px) {
+    .newsSection {
+        flex-direction: column;
+        padding: 40px 20px;
+    }
+
+    .newsText,
+    .newsImage {
+        margin: 0 auto;
+        max-width: 100%;
+    }
+
+    .newsText {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+}
+
 
 /* === BESTSELLERS SECTION === */
 .bestsellersSection {

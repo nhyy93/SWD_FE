@@ -3,7 +3,7 @@ import { Button, Card, Row, Col } from "antd";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import heroImage from "../../assets/anh2.webp";
-import styles from "./Bicycles.module.css"; // Import CSS module
+import styles from "./Bicycles.module.css"; 
 
 const HomePage: React.FC = () => {
   return (
