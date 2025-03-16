@@ -1,0 +1,98 @@
+.servicesContainer {
+    text-align: center;
+    background-color: #f8f8f8;
+    min-height: 100vh;
+    margin-top: 50px;
+}
+
+.servicesContent {
+    max-width: 1200px;
+    margin: auto;
+    padding: 50px 20px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: #333;
+}
+
+p {
+    font-size: 1rem;
+    color: #555;
+}
+
+.serviceList {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.serviceCard {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    width: 320px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.serviceCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.serviceCard img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.serviceCard h2 {
+    font-size: 1.5rem;
+    color: #222;
+    margin: 15px 0;
+}
+
+.serviceCard p {
+    font-size: 1rem;
+    color: #666;
+}
+
+.serviceCard button {
+    background-color: #1890ff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s ease;
+}
+
+.serviceCard button:hover {
+    background-color: #40a9ff;
+}
+
+.disabledLink button {
+    background-color: #ccc !important;
+    cursor: not-allowed;
+}
+
+.notice {
+    margin-top: 20px;
+    font-size: 1rem;
+    color: #d9534f;
+}
+
+.notice a {
+    color: #1890ff;
+    text-decoration: none;
+}
+
+.notice a:hover {
+    text-decoration: underline;
+}
