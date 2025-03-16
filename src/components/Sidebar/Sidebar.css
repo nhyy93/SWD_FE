@@ -1,0 +1,127 @@
+/* SIDEBAR CONTAINER */
+.sidebar {
+    width: 220px;
+    height: 100vh;
+    background: #1E2A38;
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    transition: all 0.3s ease;
+}
+
+/* SIDEBAR HEADER */
+.sidebar-header {
+    text-align: center;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    margin-bottom: 5px;
+}
+
+.sidebar-user-icon {
+    font-size: 40px;
+    /* Kích thước lớn hơn cho icon */
+    color: white;
+    /* Giữ màu trắng */
+    margin-bottom: 5px;
+}
+
+.sidebar-title {
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: white;
+}
+
+/* SIDEBAR NAVIGATION */
+.sidebar-nav {
+    flex-grow: 1;
+}
+
+.sidebar-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* SIDEBAR LINKS */
+.sidebar-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 90%;
+    padding: 8px 12px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    color: white;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.1);
+    margin: 3px auto;
+}
+
+.sidebar-icon {
+    font-size: 14px;
+}
+
+/* HOVER & ACTIVE EFFECTS */
+.sidebar-link:hover {
+    background: #1abc9c;
+}
+
+.sidebar-link.active {
+    background: #16a085;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* FOOTER (LOGOUT BUTTON) */
+.sidebar-footer {
+    margin-top: auto;
+    padding-top: 8px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.sidebar-footer .logout {
+    background: #d9534f;
+}
+
+.sidebar-footer .logout:hover {
+    background: #c9302c;
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 65px;
+        align-items: center;
+    }
+
+    .sidebar-header {
+        display: none;
+    }
+
+    .sidebar-nav ul {
+        align-items: center;
+    }
+
+    .sidebar-link {
+        justify-content: center;
+        padding: 6px;
+        font-size: 12px;
+    }
+
+    .sidebar-link span {
+        display: none;
+    }
+
+    .sidebar-footer {
+        text-align: center;
+    }
+}

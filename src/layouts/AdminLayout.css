@@ -1,0 +1,21 @@
+.admin-layout {
+    display: flex;
+}
+
+/* Push content to the right, avoiding sidebar overlap */
+.admin-content {
+    margin-left: 250px;
+    width: calc(100% - 250px);
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    transition: all 0.3s ease;
+}
+
+/* Responsive: Adjust for smaller screens */
+@media (max-width: 768px) {
+    .admin-content {
+        margin-left: 60px;
+        width: calc(100% - 60px);
+    }
+}

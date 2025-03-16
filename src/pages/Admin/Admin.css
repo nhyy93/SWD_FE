@@ -1,0 +1,225 @@
+/* ============================= */
+/* 🌟 GLOBAL STYLES FOR ADMIN PANEL 🌟 */
+/* ============================= */
+
+.admin-container {
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+    margin-left: 260px;
+    /* Ensure no sidebar overlap */
+    background: linear-gradient(to right, #f4f6f9, #ecf0f1);
+    /* Soft gradient */
+    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* 🌟 ADMIN HEADER */
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.9);
+    /* Glassmorphism */
+    padding: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    backdrop-filter: blur(8px);
+}
+
+.admin-header h1 {
+    font-size: 26px;
+    color: #2c3e50;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+/* ============================ */
+/* 🌟 BEAUTIFUL TABLE STYLES */
+/* ============================ */
+
+.admin-table {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
+    margin-top: 20px;
+}
+
+.admin-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.admin-table th {
+    background: linear-gradient(to right, #2c3e50, #1e2a38);
+    color: white;
+    text-align: left;
+    padding: 14px;
+    font-size: 16px;
+}
+
+.admin-table td {
+    padding: 14px;
+    border-bottom: 1px solid #ddd;
+    font-size: 15px;
+    color: #2c3e50;
+}
+
+.admin-table tr:hover {
+    background: rgba(44, 62, 80, 0.1);
+    transition: 0.3s ease-in-out;
+}
+
+/* ============================ */
+/* 🌟 BEAUTIFUL BUTTONS */
+/* ============================ */
+
+.admin-button {
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.admin-button.approve {
+    background: linear-gradient(to right, #1abc9c, #16a085);
+    color: white;
+    box-shadow: 0px 4px 10px rgba(26, 188, 156, 0.4);
+}
+
+.admin-button.reject {
+    background: linear-gradient(to right, #e74c3c, #c0392b);
+    color: white;
+    box-shadow: 0px 4px 10px rgba(231, 76, 60, 0.4);
+}
+
+.admin-button.verify {
+    background: linear-gradient(to right, #3498db, #2980b9);
+    color: white;
+    box-shadow: 0px 4px 10px rgba(52, 152, 219, 0.4);
+}
+
+.admin-button.suspend {
+    background: linear-gradient(to right, #e67e22, #d35400);
+    color: white;
+    box-shadow: 0px 4px 10px rgba(230, 126, 34, 0.4);
+}
+
+.admin-button:hover {
+    opacity: 0.9;
+    transform: scale(1.05);
+    transition: 0.3s ease-in-out;
+}
+
+/* ============================ */
+/* 🌟 FORM STYLES */
+/* ============================ */
+
+.admin-form {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+    margin-top: 25px;
+}
+
+.admin-form input,
+.admin-form textarea,
+.admin-form select {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    margin-top: 8px;
+    font-size: 14px;
+}
+
+.admin-form label {
+    font-weight: bold;
+    margin-top: 12px;
+    display: block;
+    font-size: 15px;
+}
+
+.admin-form button {
+    background: linear-gradient(to right, #2c3e50, #1e2a38);
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 15px;
+    width: 100%;
+    font-weight: bold;
+    text-transform: uppercase;
+    box-shadow: 0px 4px 10px rgba(44, 62, 80, 0.4);
+}
+
+.admin-form button:hover {
+    background: #1abc9c;
+}
+
+/* ============================ */
+/* 🌟 SIDEBAR ENHANCEMENTS */
+/* ============================ */
+
+.admin-sidebar {
+    position: fixed;
+    width: 260px;
+    height: 100vh;
+    background: linear-gradient(to bottom, #2c3e50, #1e2a38);
+    color: white;
+    padding: 20px;
+    box-shadow: 2px 0px 10px rgba(0, 0, 0, 0.15);
+}
+
+.admin-sidebar a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 12px;
+    margin: 6px 0;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+.admin-sidebar a:hover {
+    background: linear-gradient(to right, #1abc9c, #16a085);
+}
+
+/* ============================ */
+/* 🌟 RESPONSIVE DESIGN */
+/* ============================ */
+
+@media (max-width: 768px) {
+    .admin-container {
+        margin-left: 70px;
+        padding: 15px;
+    }
+
+    .admin-sidebar {
+        width: 70px;
+        padding: 15px;
+    }
+
+    .admin-sidebar a {
+        text-align: center;
+        padding: 10px;
+    }
+
+    .admin-sidebar a span {
+        display: none;
+    }
+
+    .admin-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
