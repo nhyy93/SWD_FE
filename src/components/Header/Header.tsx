@@ -12,9 +12,9 @@ const AppHeader: React.FC = () => {
       <nav>
         <ul className={styles.menu}>
           <li><Link to="/">Home</Link></li>
-          <li><a href="#">Services</a></li>
+          <li><Link to="/services">Services</Link></li>
           <li><Link to="/bicycles">Bicycles</Link></li>
-          <li><a href="#">Accessories</a></li>
+          <li><Link to="/accessories">Accessories</Link></li>
           <li><Link to="/about">About</Link></li>
         </ul>
       </nav>

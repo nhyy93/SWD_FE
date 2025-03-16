@@ -1,0 +1,184 @@
+.accessories {
+    font-family: 'Inter', sans-serif;
+    background-color: #f8f8f8;
+    color: #333;
+}
+
+.heroSection {
+    text-align: center;
+    padding: 80px 20px;
+    background: url('/assets/accessories-banner.jpg') center/cover no-repeat;
+    color: white;
+}
+
+.heroSection h1 {
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.heroSection p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.primaryButton {
+    background: black;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.primaryButton:hover {
+    background: #444;
+}
+
+.filters {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    max-width: 1200px;
+    margin: 40px auto;
+}
+
+.filterButton {
+    background: #ddd;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.filterButton:hover {
+    background: #bbb;
+}
+
+.productGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+.productCard {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.productCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+.productImage {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.productTag {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: red;
+    color: white;
+    font-size: 0.75rem;
+    padding: 5px 8px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.price {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 10px 0;
+    color: #222;
+}
+
+.oldPrice {
+    text-decoration: line-through;
+    color: #888;
+    font-size: 1rem;
+    margin-right: 5px;
+}
+
+.buyButton {
+    background: #1890ff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 100%;
+    transition: background 0.3s ease;
+}
+
+.buyButton:hover {
+    background: #40a9ff;
+}
+
+.relatedCategories {
+    text-align: center;
+    padding: 50px;
+}
+
+.categoryButtons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.categoryButton {
+    background: black;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.categoryButton:hover {
+    background: #444;
+}
+
+.relatedStories {
+    text-align: center;
+    padding: 50px;
+    background: #f9f9f9;
+}
+
+.storiesGrid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.storyCard {
+    background: white;
+    border-radius: 10px;
+    width: 250px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.storyCard img {
+    width: 100%;
+    height: 150px;
+    border-radius: 5px;
+}

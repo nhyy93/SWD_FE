@@ -1,15 +1,13 @@
 /* Import Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
-/* Áp dụng font chữ mềm mại hơn cho toàn bộ trang */
-.homePage {
+.bicycles {
     font-family: 'Inter', sans-serif;
-    font-weight: 400;
     color: #333;
-    background-color: rgb(232, 232, 232);
+    background-color: rgb(245, 245, 245);
 }
 
-
+/* Hero Section */
 .heroSection {
     background-size: cover;
     background-repeat: no-repeat;
@@ -22,9 +20,17 @@
     min-height: 540px;
     padding: 70px 80px;
     color: white;
-    font-size: 1.2rem;
 }
 
+.heroSection h1 {
+    color: #fff;
+}
+
+.heroSection p {
+    color: #fff;
+}
+
+/* General Section */
 .section {
     max-width: 1200px;
     margin: auto;
@@ -32,20 +38,78 @@
     text-align: center;
 }
 
+/* Swiper Styles */
+.bikeSwiper {
+    padding-bottom: 40px;
+}
+
+/* Bike Card */
+.bikeCard {
+    position: relative;
+    text-align: center;
+    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.bikeCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.bikeImage {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.price {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.oldPrice {
+    text-decoration: line-through;
+    color: #888;
+    margin-left: 10px;
+}
+
+/* Discount Label */
+.discount {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: red;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 5px 8px;
+    border-radius: 5px;
+}
+
+/* Tech Section */
 .techSection {
     text-align: center;
     padding: 50px;
     background: #f9f9f9;
 }
 
-.card {
-    text-align: center;
-    font-size: 1rem;
-    font-weight: bold;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+/* Related Stories */
+.storyGrid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
 }
 
-.card:hover {
+.storyCard {
+    padding: 20px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 200px;
+}
+
+.storyCard:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
