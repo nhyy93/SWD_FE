@@ -1,15 +1,13 @@
 /* Import Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
-/* Áp dụng font chữ mềm mại hơn cho toàn bộ trang */
-.homePage {
+.bicycles {
     font-family: 'Inter', sans-serif;
-    font-weight: 400;
     color: #333;
-    background-color: rgb(232, 232, 232);
+    background-color: rgb(245, 245, 245);
 }
 
-
+/* Hero Section */
 .heroSection {
     background-size: cover;
     background-repeat: no-repeat;
@@ -22,9 +20,17 @@
     min-height: 540px;
     padding: 70px 80px;
     color: white;
-    font-size: 1.2rem;
 }
 
+.heroSection h1 {
+    color: #fff;
+}
+
+.heroSection p {
+    color: #fff;
+}
+
+/* General Section */
 .section {
     max-width: 1200px;
     margin: auto;
@@ -32,20 +38,452 @@
     text-align: center;
 }
 
+/* Swiper Styles */
+.bikeSwiper {
+    padding-bottom: 40px;
+}
+
+/* Bike Card */
+.bikeCard {
+    position: relative;
+    text-align: center;
+    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.bikeCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.bikeImage {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.price {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.oldPrice {
+    text-decoration: line-through;
+    color: #888;
+    margin-left: 10px;
+}
+
+/* Discount Label */
+.discount {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: red;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 5px 8px;
+    border-radius: 5px;
+}
+
+/* Tech Section */
 .techSection {
     text-align: center;
     padding: 50px;
     background: #f9f9f9;
 }
 
-.card {
-    text-align: center;
-    font-size: 1rem;
-    font-weight: bold;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+/* Related Stories */
+.storyGrid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
 }
 
-.card:hover {
+.storyCard {
+    padding: 20px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 200px;
+}
+
+.storyCard:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.lightAssistSection {
+    position: relative;
+    background: url('/assets/tech.jpg') center/cover no-repeat; 
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 60px;
+    color: white;
+}
+
+.overlay {
+    background: rgba(0, 0, 0, 0.4); 
+    width: 100%;
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 60px;
+}
+
+.lightAssistContent {
+    max-width: 500px;
+}
+
+
+.lightAssistContent h2 {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: #fff;
+}
+
+.lightAssistContent p {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+.lightAssistButtons {
+    display: flex;
+    gap: 15px;
+}
+
+.lightAssistButtons .ant-btn {
+    font-size: 16px;
+    padding: 10px 20px;
+    border-radius: 6px;
+}
+
+.discoverButton {
+    background: transparent;
+    border: 2px solid white;
+    color: white;
+}
+
+.discoverButton:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.newBikeDisplay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 50px 0;
+}
+
+.bikeDetailCard {
+    max-width: 1000px;
+    width: 100%;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.bikeContent {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px; 
+}
+
+.bikeImageWrapper {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bikeImageWrapper img {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 8px;
+}
+
+.bikeInfo {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.badges {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.tag {
+    display: inline-block;
+    background: black;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 5px 8px;
+    border-radius: 5px;
+}
+
+.discount {
+    display: inline-block;
+    background: red;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 5px 8px;
+    border-radius: 5px;
+}
+
+.bikeInfo h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #222;
+}
+
+.bikeInfo p {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 8px;
+}
+
+.price {
+    font-size: 22px;
+    font-weight: bold;
+    color: #000;
+    margin-top: 10px;
+}
+
+.oldPrice {
+    font-size: 16px;
+    color: #888;
+    text-decoration: line-through;
+    margin-left: 10px;
+}
+
+.bikeInfo .ant-btn {
+    margin-top: 15px;
+    font-size: 16px;
+}
+
+.productListSection {
+    max-width: 1300px; 
+    margin: 50px auto;
+    text-align: center;
+}
+
+.productListSection h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+
+.productGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 25px; 
+    justify-content: center;
+    align-items: stretch;
+}
+
+.productCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 18px; 
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    max-width: 360px; 
+}
+
+.productCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
+}
+
+.productImage {
+    width: 100%;
+    max-width: 220px; 
+    border-radius: 6px;
+}
+
+.productCard h3 {
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.productCard p {
+    font-size: 1rem;
+    color: #666;
+}
+
+.price {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #000;
+    margin: 10px 0;
+}
+
+.oldPrice {
+    font-size: 1rem;
+    color: #888;
+    text-decoration: line-through;
+    margin-left: 5px;
+}
+
+.discount {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: red;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 5px 8px;
+    border-radius: 5px;
+}
+
+.productCard .ant-btn {
+    font-size: 1rem;
+    padding: 7px 14px;
+}
+
+@media (max-width: 1024px) {
+    .productGrid {
+        grid-template-columns: repeat(2, 1fr); 
+    }
+
+    .productCard {
+        max-width: 400px; 
+    }
+}
+
+/* Responsive: Mobile */
+@media (max-width: 768px) {
+    .productGrid {
+        grid-template-columns: repeat(1, 1fr); 
+    }
+
+    .productCard {
+        max-width: 90%;
+    }
+}
+
+/* Swiper Styles */
+.storySwiper {
+    padding-bottom: 40px;
+    width: 100%;
+    max-width: 1400px;
+    margin: auto;
+}
+
+/* Story Card */
+.storyCard {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+    max-width: 350px;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.storyCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
+}
+
+/* Story Image */
+.storyImageWrapper {
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.storyImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Story Content */
+.storyContent {
+    padding: 15px;
+    text-align: left;
+}
+
+.storyDate {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.storyTitle {
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.storyDescription {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 12px;
+}
+
+.readMore {
+    display: inline-block;
+    background: transparent;
+    border: 2px solid black;
+    color: black;
+    padding: 8px 14px;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: 0.3s;
+    text-align: center;
+}
+
+.readMore:hover {
+    background: black;
+    color: white;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .storySwiper {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .storyCard {
+        max-width: 100%;
+        min-height: 350px;
+    }
+}
+
+@media (max-width: 480px) {
+    .storyCard {
+        min-height: 300px;
+    }
 }
