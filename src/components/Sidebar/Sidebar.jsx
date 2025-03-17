@@ -19,8 +19,7 @@ const Sidebar = () => {
                     <li><NavLink to="/admin/users" className="sidebar-link"><FaUsers className="sidebar-icon" /> User Management</NavLink></li>
                     <li><NavLink to="/admin/matches" className="sidebar-link"><FaExchangeAlt className="sidebar-icon" /> Match & Ride</NavLink></li>
                     <li><NavLink to="/admin/content" className="sidebar-link"><FaClipboardList className="sidebar-icon" /> Content Moderation</NavLink></li>
-                    <li><NavLink to="/admin/revenue" className="sidebar-link"><FaDollarSign className="sidebar-icon" /> Revenue</NavLink></li>
-                    <li><NavLink to="/admin/settings" className="sidebar-link"><FaCog className="sidebar-icon" /> Settings</NavLink></li>
+                    <li><NavLink to="/admin/config" className="sidebar-link"><FaDollarSign className="sidebar-icon" /> Setting</NavLink></li>
                     <li><NavLink to="/admin/analytics" className="sidebar-link"><FaChartBar className="sidebar-icon" /> Analytics</NavLink></li>
                     <li><NavLink to="/admin/support" className="sidebar-link"><FaLifeRing className="sidebar-icon" /> Support</NavLink></li>
                 </ul>

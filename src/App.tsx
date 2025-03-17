@@ -12,7 +12,6 @@ import Dashboard from "./pages/Admin/Dashboard";
 import UserManagement from "./pages/Admin/UserManagement";
 import MatchRideMonitoring from "./pages/Admin/MatchRideMonitoring";
 import ContentModeration from "./pages/Admin/ContentModeration";
-import RevenueTransactions from "./pages/Admin/RevenueTransactions";
 import PlatformConfig from "./pages/Admin/PlatformConfig";
 import AnalyticsReporting from "./pages/Admin/AnalyticsReporting";
 import SupportFeedback from "./pages/Admin/SupportFeedback";
@@ -36,7 +35,6 @@ function App() {
           <Route path="users" element={<UserManagement />} />
           <Route path="matches" element={<MatchRideMonitoring />} />
           <Route path="content" element={<ContentModeration />} />
-          <Route path="revenue" element={<RevenueTransactions />} />
           <Route path="config" element={<PlatformConfig />} />
           <Route path="analytics" element={<AnalyticsReporting />} />
           <Route path="support" element={<SupportFeedback />} />
