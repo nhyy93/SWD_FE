@@ -1,0 +1,12 @@
+.container {
+    display: flex;
+    height: 100vh;
+  }
+  
+  .content {
+    flex: 1;
+    padding: 20px;
+    margin-left: 250px; /* Để tránh bị đè lên bởi Sidebar */
+    background-color: #f5f5f5; /* Nền nhẹ nhàng hơn */
+  }
+  
