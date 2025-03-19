@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Bicycles from "./pages/Public/Bicycles";
-import Login from "./pages/Guest/Login";
+import Login from "./pages/Public/Login";
 import Register from "./pages/Guest/Register";
 import About from "./pages/Public/About";
 import Home from "./pages/Public/Home";
