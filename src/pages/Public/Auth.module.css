@@ -1,0 +1,77 @@
+.authContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(to bottom, #2c2c2c, #1a1a1a); /* Chuyển từ xám đậm sang đen */
+}
+
+.authBox {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.1);
+    width: 430px;
+    text-align: center;
+    transition: 0.3s ease-in-out;
+}
+
+.authBox:hover {
+    box-shadow: 0px 6px 20px rgba(255, 255, 255, 0.2);
+}
+
+h2 {
+    margin-bottom: 20px;
+    font-size: 26px;
+    font-weight: bold;
+    color: #222222;
+    letter-spacing: 1px;
+}
+
+.input {
+    width: 100%;
+    padding: 12px;
+    margin: 12px 0;
+    border: 2px solid #444444;
+    border-radius: 5px;
+    background: #eeeeee;
+    transition: all 0.3s ease;
+}
+
+.input:focus {
+    border-color: #000;
+    background: #fff;
+}
+
+.submitButton {
+    width: 100%;
+    padding: 12px;
+    background: #000;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.submitButton:hover {
+    background: #222;
+}
+
+.switchAuth {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #888;
+}
+
+.switchAuth a {
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.switchAuth a:hover {
+    text-decoration: underline;
+}
