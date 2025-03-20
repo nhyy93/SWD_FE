@@ -3,28 +3,29 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: linear-gradient(to bottom, #2c2c2c, #1a1a1a); /* Chuyển từ xám đậm sang đen */
+    background: linear-gradient(to bottom, #2b2b2b, #191919); 
 }
 
 .authBox {
     background: #ffffff;
     padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.1);
-    width: 430px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
+    width: 400px;
     text-align: center;
     transition: 0.3s ease-in-out;
 }
 
 .authBox:hover {
-    box-shadow: 0px 6px 20px rgba(255, 255, 255, 0.2);
+    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.25);
 }
 
-h2 {
+.authBox h2 {
     margin-bottom: 20px;
-    font-size: 26px;
+    font-size: 24px;
     font-weight: bold;
-    color: #222222;
+    color: #222;
+    text-transform: uppercase;
     letter-spacing: 1px;
 }
 
@@ -32,42 +33,50 @@ h2 {
     width: 100%;
     padding: 12px;
     margin: 12px 0;
-    border: 2px solid #444444;
-    border-radius: 5px;
-    background: #eeeeee;
+    border: 1.5px solid #ccc;
+    border-radius: 6px;
+    background: #f9f9f9;
+    font-size: 16px;
     transition: all 0.3s ease;
 }
 
 .input:focus {
-    border-color: #000;
+    border-color: #333;
     background: #fff;
+    outline: none;
 }
 
 .submitButton {
     width: 100%;
     padding: 12px;
-    background: #000;
+    background: #222;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 6px;
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.3s ease-in-out;
 }
 
 .submitButton:hover {
-    background: #222;
+    background: #000;
+}
+
+.errorMsg {
+    color: #e74c3c;
+    font-size: 14px;
+    margin-bottom: 10px;
 }
 
 .switchAuth {
-    margin-top: 20px;
+    margin-top: 15px;
     font-size: 14px;
-    color: #888;
+    color: #666;
 }
 
 .switchAuth a {
-    color: black;
+    color: #222;
     text-decoration: none;
     font-weight: bold;
 }
