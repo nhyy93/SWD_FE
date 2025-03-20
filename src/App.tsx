@@ -20,6 +20,7 @@ import Warehouse from "./pages/Staff/Warehouse";
 import ShopOwnerLayout from "./pages/ShopOwner/ShopOwnerLayout";
 import StaffLayout from "./pages/Staff/StaffLayout";
 import ServiceManagement from "./pages/ShopOwner/ServiceManagement";
+import Profile from "./pages/Customer/Profile";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/about" element={<About />} />
+        <Route path="/profile" element={<Profile />} />
 
         <Route path="/shop-owner" element={<ShopOwnerLayout />}>
           <Route path="account" element={<AccountManagement />} />

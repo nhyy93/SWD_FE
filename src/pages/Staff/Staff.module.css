@@ -8,4 +8,124 @@
     padding: 20px;
     background: #fff5e1;
   }
-  
+  /* 📌 Staff Pages Container */
+.staffContainer {
+  max-width: 800px;
+  margin: 20px auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.pageTitle {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+/* 🗨 Chat Box */
+.chatBox {
+  height: 300px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin-bottom: 10px;
+  background: #f9f9f9;
+  border-radius: 5px;
+}
+
+.staffMessage {
+  background: #2ecc71;
+  color: white;
+  padding: 8px;
+  border-radius: 5px;
+  max-width: 70%;
+  margin-bottom: 5px;
+  align-self: flex-end;
+}
+
+.customerMessage {
+  background: #f1c40f;
+  color: black;
+  padding: 8px;
+  border-radius: 5px;
+  max-width: 70%;
+  margin-bottom: 5px;
+  align-self: flex-start;
+}
+
+.chatInputContainer {
+  display: flex;
+  gap: 10px;
+}
+
+.chatInputContainer input {
+  flex-grow: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.chatInputContainer button {
+  padding: 10px 15px;
+  background: #2c3e50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+/* 📦 Order Table */
+.orderTable {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.orderTable th, 
+.orderTable td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.orderTable th {
+  background: #f5f5f5;
+  font-weight: bold;
+}
+
+/* 🚚 Delivery & Order Status Colors */
+.processing {
+  background: #f39c12;
+  color: white;
+  padding: 6px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.shipped {
+  background: #3498db;
+  color: white;
+  padding: 6px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.delivered {
+  background: #2ecc71;
+  color: white;
+  padding: 6px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.ontheway {
+  background: #9b59b6;
+  color: white;
+  padding: 6px;
+  border-radius: 5px;
+  text-align: center;
+}
