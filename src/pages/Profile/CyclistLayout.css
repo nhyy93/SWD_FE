@@ -1,0 +1,17 @@
+.cyclist-layout {
+    display: flex;
+}
+
+.cyclist-content {
+    flex: 1;
+    padding: 40px;
+    background-color: #f3f4f6;
+    min-height: 100vh;
+}
+
+.page-content {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}

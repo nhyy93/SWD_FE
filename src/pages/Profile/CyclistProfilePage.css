@@ -1,0 +1,20 @@
+.profile-page-container {
+    padding: 40px;
+    background-color: #f9fafb;
+}
+
+.profile-section {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px;
+    /* khoảng cách đẹp với activity */
+}
+
+.activity-section {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
