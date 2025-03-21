@@ -25,8 +25,8 @@ const Profile: React.FC = () => {
       firstName: localStorage.getItem("firstName") || "",
       lastName: localStorage.getItem("lastName") || "",
       email: localStorage.getItem("email") || "",
-      address: localStorage.getItem("address") || "",
       phone: localStorage.getItem("phone") || "",
+      address: localStorage.getItem("address") || "",
       city: localStorage.getItem("city") || "",
       state: localStorage.getItem("state") || "",
       password: localStorage.getItem("password") || "",
@@ -52,7 +52,6 @@ const Profile: React.FC = () => {
 
   return (
     <div className={styles.container}>
-      {/* Sidebar */}
       <aside className={styles.sidebar}>
         <h2 className={styles.logo}>CycWorld</h2>
         <ul>
@@ -71,7 +70,6 @@ const Profile: React.FC = () => {
         </ul>
       </aside>
 
-      {/* Main Profile Content */}
       <main className={styles.profileContent}>
         <h2>Edit Profile</h2>
         <div className={styles.profileForm}>
@@ -92,6 +90,11 @@ const Profile: React.FC = () => {
           <div className={styles.formGroup}>
             <label>Email</label>
             <input type="email" name="email" value={userData.email} onChange={handleInputChange} disabled />
+          </div>
+
+          <div className={styles.formGroup}>
+            <label>Phone</label> 
+            <input type="text" name="phone" value={userData.phone} onChange={handleInputChange} />
           </div>
 
           <div className={styles.formGroup}>

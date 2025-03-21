@@ -5,6 +5,7 @@ import styles from "./Auth.module.css";
 
 const Register: React.FC = () => {
   const [username, setUsername] = useState("");
+  const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -25,6 +26,7 @@ const Register: React.FC = () => {
     try {
       const response = await axios.post("http://localhost:8080/api/auth/register", {
         username,
+        phone,
         email,
         password,
         confirmPassword,
@@ -32,10 +34,8 @@ const Register: React.FC = () => {
 
       console.log("Registration Response:", response.data);
 
-      // ✅ Hiển thị thông báo thành công ngay lập tức
-      setSuccess("🎉 Registration Successful! Redirecting to login...");
+      setSuccess("Registration Successful! Redirecting to login...");
       
-      // ✅ Chờ 1 giây để hiển thị thông báo, sau đó chuyển hướng
       setTimeout(() => {
         navigate("/login");
       }, 1000);
@@ -51,7 +51,7 @@ const Register: React.FC = () => {
       <div className={styles.authBox}>
         <h2>Register</h2>
         {error && <p className={styles.errorMsg}>{error}</p>}
-        {success && <p className={styles.successMsg}>{success}</p>} {/* ✅ Hiển thị thông báo thành công */}
+        {success && <p className={styles.successMsg}>{success}</p>} 
         
         <form onSubmit={handleRegister}>
           <input
@@ -67,6 +67,14 @@ const Register: React.FC = () => {
             placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            className={styles.input}
+            required
+          />
+          <input
+            type="tel"
+            placeholder="Phone Number"
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
             className={styles.input}
             required
           />
