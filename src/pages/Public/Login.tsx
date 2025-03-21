@@ -12,7 +12,7 @@ const Login: React.FC = () => {
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError(""); // Reset error
+    setError(""); 
   
     try {
       const response = await axios.post("http://localhost:8080/api/auth/login", {
@@ -22,13 +22,12 @@ const Login: React.FC = () => {
 
       console.log(response.data);
   
-      // Lưu token và thông tin user vào localStorage
       localStorage.setItem("token", response.data.token);
       localStorage.setItem("role", response.data.role);
-      localStorage.setItem("username", response.data.username); // Lưu username
+      localStorage.setItem("username", response.data.username); 
       localStorage.setItem("email", response.data.email);
+      localStorage.setItem("phone", response.data.phone); 
   
-      // Điều hướng đến trang dashboard của từng role
       if (response.data.role === "ADMIN") {
         navigate("/admin/dashboard");
       } else if (response.data.role === "SHOP_OWNER") {

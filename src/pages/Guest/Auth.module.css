@@ -3,7 +3,7 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: linear-gradient(to bottom, #2c2c2c, #1a1a1a); /* Chuyển từ xám đậm sang đen */
+    background: linear-gradient(to bottom, #2c2c2c, #1a1a1a); 
 }
 
 .authBox {
@@ -76,13 +76,16 @@ h2 {
     text-decoration: underline;
 }
 
-.successMsg {
-    color: #28a745;
-    background: #e6f9eb;
-    padding: 10px;
-    border-radius: 5px;
-    text-align: center;
+.errorMsg {
+    color: #e74c3c;
+    font-size: 14px;
     margin-bottom: 10px;
-    font-weight: bold;
-  }
-  
+    text-align: center;
+}
+
+.successMsg {
+    color: #2ecc71;
+    font-size: 14px;
+    margin-bottom: 10px;
+    text-align: center;
+}
