@@ -9,11 +9,13 @@ const Register: React.FC = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
+  const [success, setSuccess] = useState(""); // ✅ Thêm trạng thái hiển thị thành công
   const navigate = useNavigate();
 
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError(""); // Reset lỗi trước đó
+    setError("");
+    setSuccess("");
 
     if (password !== confirmPassword) {
       setError("Passwords do not match!");
@@ -21,18 +23,26 @@ const Register: React.FC = () => {
     }
 
     try {
-      await axios.post("http://localhost:8080/api/auth/register", {
+      const response = await axios.post("http://localhost:8080/api/auth/register", {
         username,
+        email,
         password,
         confirmPassword,
-        email,
       });
-      
 
-      // Chuyển hướng đến trang đăng nhập sau khi đăng ký thành công
-      navigate("/login");
-    } catch (err) {
-      setError("Registration failed! Try again.");
+      console.log("Registration Response:", response.data);
+
+      // ✅ Hiển thị thông báo thành công ngay lập tức
+      setSuccess("🎉 Registration Successful! Redirecting to login...");
+      
+      // ✅ Chờ 1 giây để hiển thị thông báo, sau đó chuyển hướng
+      setTimeout(() => {
+        navigate("/login");
+      }, 1000);
+
+    } catch (err: any) {
+      console.error("Registration Error:", err.response || err);
+      setError(err.response?.data?.message || "Registration failed! Try again.");
     }
   };
 
@@ -41,6 +51,8 @@ const Register: React.FC = () => {
       <div className={styles.authBox}>
         <h2>Register</h2>
         {error && <p className={styles.errorMsg}>{error}</p>}
+        {success && <p className={styles.successMsg}>{success}</p>} {/* ✅ Hiển thị thông báo thành công */}
+        
         <form onSubmit={handleRegister}>
           <input
             type="text"
@@ -76,6 +88,7 @@ const Register: React.FC = () => {
           />
           <button type="submit" className={styles.submitButton}>Register</button>
         </form>
+        
         <p className={styles.switchAuth}>
           Already have an account? <a href="/login">Login</a>
         </p>

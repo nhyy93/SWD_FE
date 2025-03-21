@@ -142,3 +142,20 @@
 .logoutBtn:hover {
     background: #c0392b;
 }
+
+.profileCartSection {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .cartIcon {
+    text-decoration: none;
+    color: black;
+    transition: 0.3s;
+  }
+  
+  .cartIcon:hover {
+    color: #007bff;
+  }
+  
