@@ -75,3 +75,14 @@ h2 {
 .switchAuth a:hover {
     text-decoration: underline;
 }
+
+.successMsg {
+    color: #28a745;
+    background: #e6f9eb;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+  
