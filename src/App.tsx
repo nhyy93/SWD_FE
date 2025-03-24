@@ -42,7 +42,6 @@ function App() {
   return (
     <Router>
       <Routes>
-        {/* Điều hướng theo role */}
         {role === "SHOP_OWNER" && <Route path="/*" element={<Navigate to="/shop-owner" />} />}
         {role === "STAFF" && <Route path="/*" element={<Navigate to="/staff" />} />}
 
