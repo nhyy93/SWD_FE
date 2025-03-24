@@ -30,7 +30,15 @@ import CyclistLayout from "./pages/Profile/CyclistLayout";
 import CyclistProfile from "./pages/Profile/CyclistProfile";
 import SavedRoutes from "./pages/Profile/SavedRoutes";
 import ManageBlogs from "./pages/Profile/ManageBlogs";
-
+import Profile from "./pages/Customer/Profile";
+import ShopServicesPage from "./pages/Cyclist/ShopServicePage";
+import CommunicationPage from "./pages/Cyclist/CommunicationPage";
+import FindShopsPage from "./pages/Cyclist/FindShopPage";
+import BuyProductPage from "./pages/Cyclist/BuyProductPage";
+import BookServicesPage from "./pages/Cyclist/BookServicePage";
+import RouteSharingPage from "./pages/Cyclist/RouteSharingPage";
+import GroupRidePage from "./pages/Cyclist/GroupRidePage";
+import 'bootstrap/dist/css/bootstrap.min.css';
 function App() {
   return (
     <Router>
@@ -43,6 +51,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/about" element={<About />} />
+        <Route path="/profile" element={<Profile />} />
 
         {/* Shop Owner Routes */}
         <Route path="/shop-owner" element={<ShopOwnerLayout />}>
@@ -60,14 +69,6 @@ function App() {
           <Route path="order-processing" element={<OrderProcessing />} />
           <Route path="warehouse" element={<Warehouse />} />
           <Route path="chat" element={<Chat />} />
-        </Route>
-
-        {/* Cyclist Routes */}
-        <Route path="/cyclist" element={<CyclistLayout />}>
-          <Route path="profile" element={<CyclistProfile />} />
-          <Route path="saved" element={<SavedRoutes />} />
-          <Route path="blogs" element={<ManageBlogs />} />
-
         </Route>
       </Routes>
     </Router>

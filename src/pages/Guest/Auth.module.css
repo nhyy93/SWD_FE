@@ -3,7 +3,7 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: linear-gradient(to bottom, #2c2c2c, #1a1a1a); /* Chuyển từ xám đậm sang đen */
+    background: linear-gradient(to bottom, #2c2c2c, #1a1a1a); 
 }
 
 .authBox {
@@ -74,4 +74,18 @@ h2 {
 
 .switchAuth a:hover {
     text-decoration: underline;
+}
+
+.errorMsg {
+    color: #e74c3c;
+    font-size: 14px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.successMsg {
+    color: #2ecc71;
+    font-size: 14px;
+    margin-bottom: 10px;
+    text-align: center;
 }

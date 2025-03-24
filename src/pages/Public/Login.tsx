@@ -1,16 +1,69 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import styles from "./Auth.module.css";
-import Header from "../../components/Header/Header";
+// import Header from "../../components/Header/Header";
 
 const Login: React.FC = () => {
+  const [username, setUsername] = useState("");
+  const [userPassword, setUserPassword] = useState("");
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
+
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError(""); 
+  
+    try {
+      const response = await axios.post("http://localhost:8080/api/auth/login", {
+        username,
+        password: userPassword,
+      });
+
+      console.log(response.data);
+  
+      localStorage.setItem("token", response.data.token);
+      localStorage.setItem("role", response.data.role);
+      localStorage.setItem("username", response.data.username); 
+      localStorage.setItem("email", response.data.email);
+      localStorage.setItem("phone", response.data.phone); 
+  
+      if (response.data.role === "ADMIN") {
+        navigate("/admin/dashboard");
+      } else if (response.data.role === "SHOP_OWNER") {
+        navigate("/shop-owner/account");
+      } else {
+        navigate("/");
+      }
+    } catch (err) {
+      setError("Invalid username or password");
+    }
+  };
+  
+
   return (
     <div className={styles.authContainer}>
-      <Header />
+      {/* <Header /> */}
       <div className={styles.authBox}>
-        <h2>Login</h2>
-        <form>
-          <input type="email" placeholder="Email" className={styles.input} />
-          <input type="password" placeholder="Password" className={styles.input} />
+        <h2>LOGIN</h2>
+        {error && <p className={styles.error}>{error}</p>}
+        <form onSubmit={handleLogin}>
+          <input
+            type="text"
+            placeholder="Username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            className={styles.input}
+            required
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            value={userPassword}
+            onChange={(e) => setUserPassword(e.target.value)}
+            className={styles.input}
+            required
+          />
           <button type="submit" className={styles.submitButton}>Login</button>
         </form>
         <p className={styles.switchAuth}>
