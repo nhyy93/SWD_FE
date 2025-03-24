@@ -1,9 +1,22 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import styles from "./Sidebar.module.css";
 
 const Sidebar = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const isShopOwner = location.pathname.startsWith("/shop-owner");
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("role");
+    localStorage.removeItem("username");
+    localStorage.removeItem("email");
+    localStorage.removeItem("phone");
+
+    navigate("/");
+
+    window.location.reload();
+  };
 
   return (
     <div className={styles.sidebar}>
@@ -27,7 +40,7 @@ const Sidebar = () => {
           </>
         )}
       </ul>
-      <button className={styles.logoutBtn}>🚪 Logout</button>
+      <button className={styles.logoutBtn} onClick={handleLogout}>🚪 Logout</button>
     </div>
   );
 };
