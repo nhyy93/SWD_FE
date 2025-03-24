@@ -22,12 +22,14 @@ const Login: React.FC = () => {
 
       console.log(response.data);
   
-      localStorage.setItem("token", response.data.token);
+      localStorage.setItem("token", response.data.accessToken);
+      localStorage.setItem("refreshToken", response.data.refreshToken);
       localStorage.setItem("role", response.data.role);
-      localStorage.setItem("username", response.data.username); 
+      localStorage.setItem("username", response.data.username);
       localStorage.setItem("email", response.data.email);
-      localStorage.setItem("phone", response.data.phone); 
-  
+      localStorage.setItem("phone", response.data.phone || "Not available");
+
+      
       if (response.data.role === "ADMIN") {
         navigate("/admin/dashboard");
       } else if (response.data.role === "SHOP_OWNER") {
@@ -35,6 +37,7 @@ const Login: React.FC = () => {
       } else {
         navigate("/");
       }
+      window.location.reload();
     } catch (err) {
       setError("Invalid username or password");
     }

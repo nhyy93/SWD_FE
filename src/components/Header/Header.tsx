@@ -50,6 +50,7 @@ const AppHeader: React.FC = () => {
       <div className={styles.authButtons}>
         {isLoggedIn ? (
           <div className={styles.profileCartSection}>
+            {/* ✅ Hiển thị giỏ hàng khi đã đăng nhập */}
             <Link to="/cart" className={styles.cartIcon}>
               <FaShoppingCart size={24} />
             </Link>

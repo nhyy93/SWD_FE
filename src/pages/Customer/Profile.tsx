@@ -24,9 +24,9 @@ const Profile: React.FC = () => {
     const storedUser = {
       firstName: localStorage.getItem("firstName") || "",
       lastName: localStorage.getItem("lastName") || "",
-      email: localStorage.getItem("email") || "",
-      phone: localStorage.getItem("phone") || "",
+      email: localStorage.getItem("email") || "Not available",
       address: localStorage.getItem("address") || "",
+      phone: localStorage.getItem("phone") || "Not available", 
       city: localStorage.getItem("city") || "",
       state: localStorage.getItem("state") || "",
       password: localStorage.getItem("password") || "",
