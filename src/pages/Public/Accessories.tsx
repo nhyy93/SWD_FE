@@ -51,14 +51,12 @@ const Accessories: React.FC = () => {
     <div className={styles.accessories}>
       <Header />
 
-      {/* Banner chính */}
       <div className={styles.heroSection}>
         <h1>Bike Gear</h1>
         <p>Find everything from pedals, lights, locks, and more for your ride.</p>
         <button className={styles.primaryButton}>See all gear</button>
       </div>
 
-      {/* Bộ lọc và sản phẩm */}
       <section className={styles.productsContainer}>
         <div className={styles.filters}>
           <button className={styles.filterButton}>Recommended</button>
@@ -81,7 +79,6 @@ const Accessories: React.FC = () => {
         </div>
       </section>
 
-      {/* Danh mục liên quan */}
       <section className={styles.relatedCategories}>
         <h2>Related Categories</h2>
         <div className={styles.categoryButtons}>
@@ -90,7 +87,6 @@ const Accessories: React.FC = () => {
         </div>
       </section>
 
-      {/* Related Stories */}
       <section className={styles.relatedStories}>
         <h2>Related Stories</h2>
         <div className={styles.storiesGrid}>
