@@ -1,0 +1,62 @@
+.blogs-container {
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-width: 700px;
+    margin: auto;
+}
+
+.create-post textarea {
+    width: 100%;
+    min-height: 80px;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+    margin-bottom: 10px;
+}
+
+.create-post button {
+    background: #3b82f6;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.post-card {
+    background: #f9fafb;
+    padding: 20px;
+    border-radius: 12px;
+    margin-top: 20px;
+}
+
+.post-content {
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.post-actions button {
+    margin-right: 10px;
+    background: #e5e7eb;
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+}
+
+.post-actions button:hover {
+    background-color: #d1d5db;
+}
+
+.comments-section {
+    margin-top: 15px;
+}
+
+.comments-section input {
+    width: 100%;
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #d1d5db;
+}

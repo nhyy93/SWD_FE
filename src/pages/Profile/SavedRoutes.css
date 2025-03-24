@@ -1,0 +1,106 @@
+.saved-routes-container {
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.import-btn label {
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.filters {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.filters input,
+.filters select {
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+    background-color: #f9fafb;
+    flex: 1;
+}
+
+.search-box {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+    background-color: #f9fafb;
+    margin-bottom: 25px;
+}
+
+.routes-list .route-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #f9fafb;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.route-card img {
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.route-info {
+    flex: 1;
+    padding-left: 20px;
+}
+
+.route-info h3 {
+    font-size: 18px;
+    color: #111827;
+}
+
+.route-info .tags span {
+    background: #e5e7eb;
+    padding: 6px 10px;
+    border-radius: 6px;
+    margin-right: 8px;
+}
+
+.route-info p.date {
+    color: #6b7280;
+    font-size: 14px;
+    margin-top: 8px;
+}
+
+.actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.actions button {
+    background: #dc2626;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.actions button:hover {
+    background: #b91c1c;
+}
