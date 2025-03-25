@@ -57,30 +57,31 @@ const Bicycles: React.FC = () => {
   useEffect(() => {
     const fetchBicycles = async () => {
       try {
-        const token = localStorage.getItem("token");
+        // const token = localStorage.getItem("token");
 
-        if (!token) {
-          setError("User is not authenticated. Please log in.");
-          return;
-        }
+        // if (!token) {
+        //   setError("User is not authenticated. Please log in.");
+        //   return;
+        // }
 
         const response = await axios.get("http://localhost:8080/api/products", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
+          // headers: {
+          //   Authorization: `Bearer ${token}`,
+          // },
         });
 
         const products = response.data;
 
-        const sortedProducts = [...products].sort((a, b) => a.price - b.price);
+        const bikeProducts = products.filter((product) => product.type === "BIKE");
 
-        setSellingFast(sortedProducts.slice(0, 5));
+        const sortedBikes = [...bikeProducts].sort((a, b) => a.price - b.price);
 
-        setBestSellers(sortedProducts.slice(0, 2)); 
+        setBicycles(sortedBikes);
+        setSellingFast(sortedBikes.slice(0, 5));
+        setBestSellers(sortedBikes.slice(0, 2));
+        setBestForLess(sortedBikes[0]);
+        setMoreOptions(sortedBikes);
 
-        setBestForLess(sortedProducts[0]);
-
-        setMoreOptions(products);
       } catch (error) {
         console.error("Error fetching products:", error);
         setError("Failed to fetch products. Please try again.");
@@ -89,6 +90,7 @@ const Bicycles: React.FC = () => {
 
     fetchBicycles();
   }, []);
+
 
   return (
     <div className={styles.bicycles}>
