@@ -1,4 +1,9 @@
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import { useEffect, useState } from "react";
 
 // Public Pages
@@ -42,8 +47,12 @@ function App() {
   return (
     <Router>
       <Routes>
-        {role === "SHOP_OWNER" && <Route path="/*" element={<Navigate to="/shop-owner" />} />}
-        {role === "STAFF" && <Route path="/*" element={<Navigate to="/staff" />} />}
+        {role === "SHOP_OWNER" && (
+          <Route path="/*" element={<Navigate to="/shop-owner" />} />
+        )}
+        {role === "STAFF" && (
+          <Route path="/*" element={<Navigate to="/staff" />} />
+        )}
 
         {/* Public Routes */}
         <Route path="/" element={<Home />} />
@@ -72,6 +81,16 @@ function App() {
           <Route path="warehouse" element={<Warehouse />} />
           <Route path="chat" element={<Chat />} />
         </Route>
+
+        {/* <Route>
+          <Route path="/group-ride" element={<GroupRidePage />} />
+          <Route path="/route-sharing" element={<RouteSharingPage />} />
+          <Route path="/book-services" element={<BookServices Page />} />
+          <Route path="/buy-product" element={<Buy ProductPage />} />
+          <Route path="/find-shop" element={<FindShopsPage />} />
+          <Route path="/shop-services" element={<ShopServicesPage />} />
+          <Route path="/communication" element={<CommunicationPage />} />
+        </Route> */}
 
         {/* Redirect Unknown Routes to Home */}
         <Route path="*" element={<Navigate to="/" />} />
