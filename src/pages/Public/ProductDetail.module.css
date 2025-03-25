@@ -1,0 +1,99 @@
+.container {
+    display: flex;
+    max-width: 2000px; 
+    width: 100%;
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin: 40px auto;
+    align-items: center;
+    gap: 50px; 
+}
+
+.imageSection {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.productImage {
+    max-width: 90%;
+    max-height: 450px;
+    object-fit: contain;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.infoSection {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.productTitle {
+    font-size: 32px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.productDescription {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.productPrice {
+    font-size: 26px;
+    font-weight: bold;
+    color: #d32f2f;
+    margin-bottom: 25px;
+}
+
+.buttonGroup {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.buttonGroup button {
+    flex: 1;
+    padding: 14px;
+    font-size: 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.buttonGroup .addToCart {
+    background-color: #f0ad4e;
+    border: none;
+    color: white;
+}
+
+.buttonGroup .addToCart:hover {
+    background-color: #ec971f;
+}
+
+.buttonGroup .buyNow {
+    background-color: #007bff;
+    border: none;
+    color: white;
+}
+
+.buttonGroup .buyNow:hover {
+    background-color: #0056b3;
+}
+
+.loading,
+.error {
+    text-align: center;
+    margin-top: 50px;
+    font-size: 20px;
+}

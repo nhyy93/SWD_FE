@@ -9,7 +9,6 @@ const isLoggedIn = false;
 const Services: React.FC = () => {
   const navigate = useNavigate();
 
-  // Hàm xử lý điều hướng
   const handleButtonClick = (route: string) => {
     if (!isLoggedIn) {
       navigate("/login"); 
@@ -27,7 +26,6 @@ const Services: React.FC = () => {
         <p>Discover our top-quality bicycles, accessories, and repair services.</p>
 
         <div className={styles.serviceList}>
-          {/* Bicycle Sales */}
           <div className={styles.serviceCard}>
             <img src="/assets/sv1.webp" alt="Bike Sale" />
             <h2>Bicycle Sales</h2>
@@ -35,7 +33,6 @@ const Services: React.FC = () => {
             <button onClick={() => handleButtonClick("/bicycles")}>Shop Now</button>
           </div>
 
-          {/* Accessories Sales */}
           <div className={styles.serviceCard}>
             <img src="/assets/sv2.jpg" alt="Accessories" />
             <h2>Accessories Sales</h2>
@@ -43,7 +40,6 @@ const Services: React.FC = () => {
             <button onClick={() => handleButtonClick("/accessories")}>Shop Now</button>
           </div>
 
-          {/* Repair Service */}
           <div className={styles.serviceCard}>
             <img src="/assets/repair.jpg" alt="Bike Repair" />
             <h2>Bike Repair Service</h2>

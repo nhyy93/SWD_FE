@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Button } from "antd";
 import styles from "./Accessories.module.css";
@@ -8,22 +9,12 @@ import Footer from "../../components/Footer/Footer";
 const Accessories: React.FC = () => {
   const [accessories, setAccessories] = useState<any[]>([]);
   const [error, setError] = useState<string | null>(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchAccessories = async () => {
       try {
-        // const token = localStorage.getItem("token");
-
-        // if (!token) {
-        //   setError("User is not authenticated. Please log in.");
-        //   return;
-        // }
-
-        const response = await axios.get("http://localhost:8080/api/products", {
-          // headers: {
-          //   Authorization: `Bearer ${token}`,
-          // },
-        });
+        const response = await axios.get("http://localhost:8080/api/products");
 
         const accessoryProducts = response.data.filter((item) => item.type === "ACCESSORY");
 
@@ -37,6 +28,10 @@ const Accessories: React.FC = () => {
     fetchAccessories();
   }, []);
 
+  const handleDetailClick = (productId: number) => {
+    navigate(`/product/${productId}`);
+  };
+
   return (
     <div className={styles.accessories}>
       <Header />
@@ -47,7 +42,6 @@ const Accessories: React.FC = () => {
       </div>
 
       <section className={styles.productsContainer}>
-
         <div className={styles.productGrid}>
           {error ? (
             <p className={styles.error}>{error}</p>
@@ -66,7 +60,9 @@ const Accessories: React.FC = () => {
                 <p className={styles.price}>
                   {new Intl.NumberFormat("vi-VN", { style: "currency", currency: "VND" }).format(item.price)}
                 </p>
-                <Button type="primary">Add to Cart</Button>
+                <Button type="primary" onClick={() => handleDetailClick(item.id)}>
+                  Detail
+                </Button>
               </div>
             ))
           )}

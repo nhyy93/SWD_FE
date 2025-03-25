@@ -9,6 +9,8 @@ import About from "./pages/Public/About";
 import Home from "./pages/Public/Home";
 import Services from "./pages/Public/Services";
 import Accessories from "./pages/Public/Accessories";
+import ProductDetail from "./pages/Public/ProductDetail";
+
 
 // Shop Owner Pages
 import AccountManagement from "./pages/ShopOwner/AccountManagement";
@@ -51,6 +53,8 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/about" element={<About />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/product/:id" element={<ProductDetail />} />
+
 
         <Route path="/shop-owner/*" element={<ShopOwnerLayout />}>
           <Route path="account" element={<AccountManagement />} />
