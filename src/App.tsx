@@ -39,6 +39,7 @@ import BookServicesPage from "./pages/Cyclist/BookServicePage";
 import RouteSharingPage from "./pages/Cyclist/RouteSharingPage";
 import GroupRidePage from "./pages/Cyclist/GroupRidePage";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import CyclistProfilePage from "./pages/Profile/CyclistProfilePage";
 function App() {
   return (
     <Router>
@@ -70,6 +71,15 @@ function App() {
           <Route path="warehouse" element={<Warehouse />} />
           <Route path="chat" element={<Chat />} />
         </Route>
+
+        {/* Cyclist Routes */}
+        <Route path="/cyclist" element={<CyclistLayout />}>
+          <Route path="profile" element={<CyclistProfile />} />
+          <Route path="saved" element={<SavedRoutes />} />
+          <Route path="blogs" element={<ManageBlogs />} />
+
+        </Route>
+
       </Routes>
     </Router>
   );
