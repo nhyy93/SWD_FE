@@ -3,11 +3,10 @@
     color: #333;
   }
   
-  /* ===== Hero Section ===== */
   .heroSection {
     position: relative;
     width: 100%;
-    height: 70vh; /* chiều cao hero, tuỳ chỉnh */
+    height: 70vh; 
     background: url("/assets/hero-banner.jpg") center/cover no-repeat;
     display: flex;
     align-items: center;
@@ -21,20 +20,20 @@
   
   .heroContent h1 {
     font-size: 3rem;
-    color: #0a0a0a;
+    color: #ffffff;
     margin-bottom: 10px;
   }
   
   .heroContent p {
     font-size: 1.2rem;
-    color: #fff;
+    color: #566781;
     margin-bottom: 20px;
   }
   
   .heroContent button {
     padding: 12px 24px;
-    background-color: #000;
-    color: #fff;
+    background-color: #ffffff;
+    color: #080808;
     border: none;
     cursor: pointer;
     border-radius: 4px;
@@ -43,10 +42,9 @@
   }
   
   .heroContent button:hover {
-    background-color: #333;
+    background-color: #747272;
   }
   
-  /* ===== Shop by world ===== */
   .shopByWorld {
     padding: 40px 5%;
     background-color: #f8f8f8;
@@ -61,18 +59,18 @@
   .worldGrid {
     display: flex;
     gap: 20px;
-    overflow-x: auto; /* Nếu muốn trượt ngang trên mobile */
-    justify-content: center; /* canh giữa các item */
+    overflow-x: auto; 
+    justify-content: center;
   }
   
   .worldItem {
     background-color: #fff;
-    width: 200px; /* chiều rộng item */
+    width: 200px; 
     border-radius: 8px;
     text-align: center;
     padding: 10px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    flex-shrink: 0; /* để item không co lại nếu trượt ngang */
+    flex-shrink: 0; 
   }
   
   .worldItem img {
@@ -85,7 +83,6 @@
     font-weight: 500;
   }
   
-  /* ===== Discover more ===== */
   .discoverMore {
     padding: 40px 5%;
   }
@@ -120,7 +117,6 @@
     font-size: 1.2rem;
   }
   
-  /* ===== CycWorld Support ===== */
   .supportSection {
     padding: 40px 5%;
     background-color: #f8f8f8;
@@ -152,7 +148,6 @@
     margin-bottom: 10px;
   }
   
-  /* ===== News & Stories ===== */
   .newsSection {
     padding: 40px 5%;
   }
@@ -167,7 +162,9 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
     gap: 20px;
+    justify-content: center;
   }
+  
   
   .newsCard {
     background-color: #fff;
@@ -206,7 +203,6 @@
     background-color: #333;
   }
   
-  /* ===== Footer ===== */
   .footer {
     text-align: center;
     padding: 20px;
