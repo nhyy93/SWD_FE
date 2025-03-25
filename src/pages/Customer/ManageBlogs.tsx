@@ -39,21 +39,22 @@ export default function ManageBlogs() {
 
     return (
         <div className={styles.container}>
-            {/* Sidebar giống Profile */}
+
             <aside className={styles.sidebar}>
                 <h2 className={styles.logo}>CycWorld</h2>
                 <ul>
                     <li><FaHome /><Link to="/">Home</Link></li>
                     <li><FaUserCircle /><Link to="/profile">Profile</Link></li>
-                    <li><FaUsers /> My Group</li>
-                    <li><FaBell /> Notifications</li>
-                    <li><FaShoppingCart /> My Cart</li>
-                    <li><FaMapMarkedAlt /><Link to="/saved">Saved Routes</Link></li>
-                    <li><FaBox /> Orders Status</li>
-                    <li><FaHistory /> Transaction History</li>
-                    <li className={styles.active}><FaComments /> Manage Blogs</li>
+                    <li ><FaUsers /><Link to="/group-ride">My Group</Link></li>
+                    <li><FaBell /><Link to="/notifications">Notifications</Link></li>
+                    <li><FaShoppingCart /><Link to="/cart">My Cart</Link></li>
+                    <li><FaMapMarkedAlt /><Link to="/route-sharing">Route Sharing</Link></li>
+                    <li><FaBox /><Link to="/orders">Orders Status</Link></li>
+                    <li><FaHistory /><Link to="/transactions">Transaction History</Link></li>
+                    <li className={styles.active}><FaComments /><Link to="/blogs">Manage Blogs</Link></li>
                 </ul>
             </aside>
+
 
             {/* Content */}
             <main className={styles.profileContent}>

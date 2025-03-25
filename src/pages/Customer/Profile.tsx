@@ -56,16 +56,15 @@ const Profile: React.FC = () => {
         <ul>
           <li><FaHome /><Link to="/">Home</Link></li>
           <li className={styles.active}><FaUserCircle /><Link to="/profile">Profile</Link></li>
-          <li><FaUsers /><Link to="/group">My Group</Link></li>
+          <li><FaUsers /><Link to="/group-ride">My Group</Link></li>
           <li><FaBell /><Link to="/notifications">Notifications</Link></li>
           <li><FaShoppingCart /><Link to="/cart">My Cart</Link></li>
-          <li><FaMapMarkedAlt /><Link to="/saved">Saved Routes</Link></li>
+          <li><FaMapMarkedAlt /><Link to="/route-sharing">Route Sharing</Link></li>
           <li><FaBox /><Link to="/orders">Orders Status</Link></li>
           <li><FaHistory /><Link to="/transactions">Transaction History</Link></li>
           <li><FaComments /><Link to="/blogs">Manage Blogs</Link></li>
         </ul>
       </aside>
-
 
       <main className={styles.profileContent}>
         <h2>Edit Profile</h2>
