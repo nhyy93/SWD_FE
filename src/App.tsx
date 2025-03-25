@@ -19,14 +19,12 @@ import CreatePost from "./pages/ShopOwner/CreatePost";
 import ServiceManagement from "./pages/ShopOwner/ServiceManagement";
 import ShopOwnerLayout from "./pages/ShopOwner/ShopOwnerLayout";
 
-// Staff Pages
 import Chat from "./pages/Staff/Chat";
 import Delivery from "./pages/Staff/Delivery";
 import OrderProcessing from "./pages/Staff/OrderProcessing";
 import Warehouse from "./pages/Staff/Warehouse";
 import StaffLayout from "./pages/Staff/StaffLayout";
 
-// Cyclist Pages
 import Profile from "./pages/Customer/Profile";
 
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -45,7 +43,6 @@ function App() {
         {role === "SHOP_OWNER" && <Route path="/*" element={<Navigate to="/shop-owner" />} />}
         {role === "STAFF" && <Route path="/*" element={<Navigate to="/staff" />} />}
 
-        {/* Public Routes */}
         <Route path="/" element={<Home />} />
         <Route path="/services" element={<Services />} />
         <Route path="/bicycles" element={<Bicycles />} />
@@ -55,7 +52,6 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/profile" element={<Profile />} />
 
-        {/* Shop Owner Routes */}
         <Route path="/shop-owner/*" element={<ShopOwnerLayout />}>
           <Route path="account" element={<AccountManagement />} />
           <Route path="orders" element={<OrderManagement />} />
@@ -65,7 +61,6 @@ function App() {
           <Route path="services" element={<ServiceManagement />} />
         </Route>
 
-        {/* Staff Routes */}
         <Route path="/staff/*" element={<StaffLayout />}>
           <Route path="delivery" element={<Delivery />} />
           <Route path="order-processing" element={<OrderProcessing />} />
@@ -73,7 +68,6 @@ function App() {
           <Route path="chat" element={<Chat />} />
         </Route>
 
-        {/* Redirect Unknown Routes to Home */}
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </Router>
