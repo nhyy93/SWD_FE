@@ -6,47 +6,44 @@ import Footer from "../../components/Footer/Footer";
 const Home: React.FC = () => {
   return (
     <div className={styles.homepage}>
-            <Header />
-      {/* ===== Hero Section ===== */}
-      <section className={styles.heroSection}>
+      <Header />
+      <section className={styles.heroSection} style={{ backgroundImage: 'url("/assets/bghome.jpg")', backgroundSize: 'cover', backgroundPosition: 'center' }}>
         <div className={styles.heroContent}>
           <h1>Custom made</h1>
           <p>
-            Introducing MyCycWorld. Realize the bike of your dreams.
+            Introducing CycWorld. Realize the bike of your dreams.
           </p>
           <button>Customize your dream ride</button>
         </div>
-        {/* Hero background image hoặc <img> tuỳ thiết kế */}
       </section>
 
-      {/* ===== Shop by world ===== */}
+
       <section className={styles.shopByWorld}>
         <h2>Shop by world</h2>
         <div className={styles.worldGrid}>
           <div className={styles.worldItem}>
-            <img src="/assets/road-bikes.jpg" alt="Road Bikes" />
+            <img src="/assets/m1.jpg" alt="Road Bikes" />
             <p>Road Bikes</p>
           </div>
           <div className={styles.worldItem}>
-            <img src="/assets/gravel-bikes.jpg" alt="Gravel Bikes" />
+            <img src="/assets/m2.jpg" alt="Gravel Bikes" />
             <p>Gravel Bikes</p>
           </div>
           <div className={styles.worldItem}>
-            <img src="/assets/mountain-bikes.jpg" alt="Mountain Bikes" />
+            <img src="/assets/m3.jpg" alt="Mountain Bikes" />
             <p>Mountain Bikes</p>
           </div>
           <div className={styles.worldItem}>
-            <img src="/assets/e-bikes.jpg" alt="E-Bikes" />
+            <img src="/assets/m4.webp" alt="E-Bikes" />
             <p>E-Bikes</p>
           </div>
           <div className={styles.worldItem}>
-            <img src="/assets/city-touring.jpg" alt="City & Touring Bikes" />
+            <img src="/assets/m5.webp" alt="City & Touring Bikes" />
             <p>City & Touring Bikes</p>
           </div>
         </div>
       </section>
 
-      {/* ===== Discover more ===== */}
       <section className={styles.discoverMore}>
         <h2>Discover more from CycWorld</h2>
         <div className={styles.discoverGrid}>
@@ -74,7 +71,6 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* ===== CycWorld Support ===== */}
       <section className={styles.supportSection}>
         <h2>CycWorld Support</h2>
         <div className={styles.supportGrid}>
@@ -91,37 +87,47 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* ===== News & Stories ===== */}
       <section className={styles.newsSection}>
         <h2>News & Stories</h2>
         <div className={styles.newsGrid}>
           <div className={styles.newsCard}>
-            <img src="/assets/news1.jpg" alt="News 1" />
+            <img src="/assets/new1.jpg" alt="News 1" />
             <p>Mountain bike passion: where every trail is a new adventure.</p>
             <button>Read more</button>
           </div>
           <div className={styles.newsCard}>
-            <img src="/assets/news2.jpg" alt="News 2" />
+            <img src="/assets/new2.webp" alt="News 2" />
             <p>Gear up for your next gravel ride. Tips and stories.</p>
             <button>Read more</button>
           </div>
           <div className={styles.newsCard}>
-            <img src="/assets/news3.jpg" alt="News 3" />
+            <img src="/assets/new3.jpg" alt="News 3" />
             <p>Urban commute made easy: city cycling at its best.</p>
             <button>Read more</button>
           </div>
           <div className={styles.newsCard}>
-            <img src="/assets/news4.jpg" alt="News 4" />
+            <img src="/assets/new4.jpg" alt="News 4" />
             <p>Join our charity ride event, pushing limits for a cause.</p>
             <button>Read more</button>
           </div>
           <div className={styles.newsCard}>
-            <img src="/assets/news5.jpg" alt="News 5" />
+            <img src="/assets/new5.avif" alt="News 5" />
             <p>Off-road challenge: explore beyond the beaten path.</p>
+            <button>Read more</button>
+          </div>
+          <div className={styles.newsCard}>
+            <img src="/assets/new6.webp" alt="News 6" />
+            <p>The ultimate guide to bikepacking adventures.</p>
+            <button>Read more</button>
+          </div>
+          <div className={styles.newsCard}>
+            <img src="/assets/new7.jpeg" alt="News 7" />
+            <p>Best scenic cycling routes around the world.</p>
             <button>Read more</button>
           </div>
         </div>
       </section>
+
 
       <Footer />
 
