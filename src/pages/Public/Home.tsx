@@ -48,41 +48,66 @@ const Home: React.FC = () => {
         <h2>Discover more from CycWorld</h2>
         <div className={styles.discoverGrid}>
           <div className={styles.discoverCard}>
-            <img src="/assets/deal1.jpg" alt="Deal 1" />
+            <img src="/assets/f1.webp" alt="Deal 1" />
             <h3>Go fast for less</h3>
             <p>
               Compact geometry, promising long rides at a fraction of speed.
             </p>
           </div>
           <div className={styles.discoverCard}>
-            <img src="/assets/deal2.jpg" alt="Deal 2" />
+            <img src="/assets/f2.webp" alt="Deal 2" />
             <h3>Deal of the day</h3>
             <p>
               Aero-road CF SLX AXS: built for speed and performance.
             </p>
           </div>
           <div className={styles.discoverCard}>
-            <img src="/assets/deal3.jpg" alt="Deal 3" />
+            <img src="/assets/f3.png" alt="Deal 3" />
             <h3>Save on adventures</h3>
             <p>
               Explore rough terrains with comfort and style.
             </p>
           </div>
+          <div className={styles.discoverCard}>
+            <img src="/assets/f4.webp" alt="Deal 4" />
+            <h3>Lightweight & Speed</h3>
+            <p>
+              The lightest frame technology meets next-gen aerodynamics.
+            </p>
+          </div>
+          <div className={styles.discoverCard}>
+            <img src="/assets/f5.webp" alt="Deal 5" />
+            <h3>Commuter Special</h3>
+            <p>
+              Experience the best urban mobility with our latest commuter bikes.
+            </p>
+          </div>
         </div>
       </section>
+
 
       <section className={styles.supportSection}>
         <h2>CycWorld Support</h2>
         <div className={styles.supportGrid}>
           <div className={styles.supportItem}>
-            <img src="/assets/support1.jpg" alt="Support 1" />
+            <img src="/assets/s1.jpg" alt="Support 1" />
             <h3>Visit the CycWorld Showroom Center</h3>
             <p>Learn More</p>
           </div>
           <div className={styles.supportItem}>
-            <img src="/assets/support2.jpg" alt="Support 2" />
-            <h3>MyCycWorld: My Rides, Connected</h3>
+            <img src="/assets/s2.jpg" alt="Support 2" />
+            <h3>CycWorld: My Rides, Connected</h3>
             <p>Download the App</p>
+          </div>
+          <div className={styles.supportItem}>
+            <img src="/assets/s3.webp" alt="Support 3" />
+            <h3>Find a Service Partner</h3>
+            <p>Locate the nearest service center for bike maintenance.</p>
+          </div>
+          <div className={styles.supportItem}>
+            <img src="/assets/s4.png" alt="Support 4" />
+            <h3>Warranty & Repairs</h3>
+            <p>Check your warranty and repair status online.</p>
           </div>
         </div>
       </section>
