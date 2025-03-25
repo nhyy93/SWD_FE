@@ -28,10 +28,15 @@ import StaffLayout from "./pages/Staff/StaffLayout";
 
 // Cyclist Pages
 import Profile from "./pages/Customer/Profile";
-import CyclistLayout from "./pages/Profile/CyclistLayout";
-import CyclistProfile from "./pages/Profile/CyclistProfile";
-import SavedRoutes from "./pages/Profile/SavedRoutes";
-import ManageBlogs from "./pages/Profile/ManageBlogs";
+import SavedRoutes from "./pages/Customer/SavedRoutes";
+import ManageBlogs from "./pages/Customer/ManageBlogs";
+import ShopServicesPage from "./pages/Cyclist/ShopServicePage";
+import CommunicationPage from "./pages/Cyclist/CommunicationPage";
+import FindShopsPage from "./pages/Cyclist/FindShopPage";
+import BuyProductPage from "./pages/Cyclist/BuyProductPage";
+import BookServicesPage from "./pages/Cyclist/BookServicePage";
+import RouteSharingPage from "./pages/Cyclist/RouteSharingPage";
+import GroupRidePage from "./pages/Cyclist/GroupRidePage";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
@@ -57,7 +62,8 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/about" element={<About />} />
         <Route path="/profile" element={<Profile />} />
-
+        <Route path="/saved" element={<SavedRoutes />} />
+        <Route path="/blogs" element={<ManageBlogs />} />
         {/* Shop Owner Routes */}
         <Route path="/shop-owner/*" element={<ShopOwnerLayout />}>
           <Route path="account" element={<AccountManagement />} />
@@ -75,15 +81,14 @@ function App() {
           <Route path="warehouse" element={<Warehouse />} />
           <Route path="chat" element={<Chat />} />
         </Route>
-
         {/* Cyclist Routes */}
-        <Route path="/cyclist" element={<CyclistLayout />}>
-          <Route path="profile" element={<CyclistProfile />} />
-          <Route path="saved" element={<SavedRoutes />} />
-          <Route path="blogs" element={<ManageBlogs />} />
-
-        </Route>
-
+        <Route path="/group-ride" element={<GroupRidePage />} />
+        <Route path="/route-sharing" element={<RouteSharingPage />} />
+        <Route path="/book-services" element={<BookServicesPage />} />
+        <Route path="/buy-product" element={<BuyProductPage />} />
+        <Route path="/find-shop" element={<FindShopsPage />} />
+        <Route path="/shop-services" element={<ShopServicesPage />} />
+        <Route path="/communication" element={<CommunicationPage />} />
         {/* Redirect Unknown Routes to Home */}
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>

@@ -2,9 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./Profile.module.css";
 import {
-  FaUserCircle, FaBox, FaHistory, FaCog, FaHome, FaUsers,
-  FaBell, FaMapMarkedAlt, FaShoppingCart, FaSave, FaTimes, FaSignOutAlt,
-  FaComments
+  FaUserCircle, FaBox, FaHistory, FaHome, FaUsers,
+  FaBell, FaMapMarkedAlt, FaShoppingCart, FaSave, FaTimes, FaSignOutAlt, FaComments
 } from "react-icons/fa";
 
 const Profile: React.FC = () => {
@@ -55,20 +54,18 @@ const Profile: React.FC = () => {
       <aside className={styles.sidebar}>
         <h2 className={styles.logo}>CycWorld</h2>
         <ul>
-          <li>
-            <FaHome />
-            <Link to="/" className={styles.noUnderline}>Home</Link>
-          </li>
-          <li className={styles.active}><FaUserCircle /> Profile</li>
-          <li><FaUsers /> My Group</li>
-          <li><FaBell /> Notifications</li>
-          <li><FaShoppingCart /> My Cart</li>
-          <li><FaMapMarkedAlt /> Saved Routes</li>
-          <li><FaBox /> Orders Status</li>
-          <li><FaHistory /> Transaction History</li>
-          <li><FaComments /> Chat</li>
+          <li><FaHome /><Link to="/">Home</Link></li>
+          <li className={styles.active}><FaUserCircle /><Link to="/profile">Profile</Link></li>
+          <li><FaUsers /><Link to="/group">My Group</Link></li>
+          <li><FaBell /><Link to="/notifications">Notifications</Link></li>
+          <li><FaShoppingCart /><Link to="/cart">My Cart</Link></li>
+          <li><FaMapMarkedAlt /><Link to="/saved">Saved Routes</Link></li>
+          <li><FaBox /><Link to="/orders">Orders Status</Link></li>
+          <li><FaHistory /><Link to="/transactions">Transaction History</Link></li>
+          <li><FaComments /><Link to="/blogs">Manage Blogs</Link></li>
         </ul>
       </aside>
+
 
       <main className={styles.profileContent}>
         <h2>Edit Profile</h2>

@@ -1,16 +1,21 @@
 .container {
   display: flex;
-  height: 100vh;
+  align-items: stretch;
+  min-height: 100vh;
   background: #edf1f1;
 }
+
 
 .sidebar {
   width: 250px;
   background: #161616;
   color: white;
   padding: 20px;
-  display: flex;
-  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  z-index: 999;
 }
 
 .logo {
@@ -49,14 +54,17 @@
 
 .profileContent {
   flex: 1;
+  margin-left: 290px;
   padding: 40px;
   background: white;
   border-radius: 12px;
-  margin: 20px;
+  margin-top: 20px;
+  margin-right: 20px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .profileForm {
+
   background: white;
   padding: 20px;
   border-radius: 10px;
@@ -102,7 +110,9 @@
   margin-top: 20px;
 }
 
-.cancelBtn, .saveBtn, .logoutBtn {
+.cancelBtn,
+.saveBtn,
+.logoutBtn {
   padding: 10px 20px;
   border-radius: 8px;
   cursor: pointer;
@@ -111,6 +121,28 @@
   text-align: center;
 }
 
-.cancelBtn { background: red; color: white; }
-.saveBtn { background: orange; color: white; }
-.logoutBtn { background: blue; color: white; }
+.cancelBtn {
+  background: red;
+  color: white;
+}
+
+.saveBtn {
+  background: orange;
+  color: white;
+}
+
+.logoutBtn {
+  background: blue;
+  color: white;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
