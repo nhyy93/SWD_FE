@@ -28,7 +28,7 @@ import BuyProductPage from "./pages/Cyclist/BuyProductPage";
 import BookServicesPage from "./pages/Cyclist/BookServicePage";
 import RouteSharingPage from "./pages/Cyclist/RouteSharingPage";
 import GroupRidePage from "./pages/Cyclist/GroupRidePage";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 function App() {
   return (
     <Router>
@@ -57,13 +57,13 @@ function App() {
           <Route path="warehouse" element={<Warehouse />} />
           <Route path="chat" element={<Chat />} />
         </Route>
-        <Route path="/group-ride" element={<GroupRidePage />} /> 
-        <Route path="/route-sharing" element={<RouteSharingPage />} /> 
-        <Route path="/book-services" element={<BookServicesPage />} /> 
-        <Route path="/buy-product" element={<BuyProductPage />} /> 
-        <Route path="/find-shop" element={<FindShopsPage />} /> 
-        <Route path="/shop-services" element={<ShopServicesPage />} /> 
-        <Route path="/communication" element={<CommunicationPage />} /> 
+        <Route path="/group-ride" element={<GroupRidePage />} />
+        <Route path="/route-sharing" element={<RouteSharingPage />} />
+        <Route path="/book-services" element={<BookServicesPage />} />
+        <Route path="/buy-product" element={<BuyProductPage />} />
+        <Route path="/find-shop" element={<FindShopsPage />} />
+        <Route path="/shop-services" element={<ShopServicesPage />} />
+        <Route path="/communication" element={<CommunicationPage />} />
       </Routes>
     </Router>
   );
