@@ -1,51 +1,42 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { Button } from "antd";
 import styles from "./Accessories.module.css";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 
-const accessories = [
-  {
-    id: 1,
-    name: "CycWorld Garmin Mount",
-    price: "$29.95",
-    img: "/assets/accessory1.jpg",
-    tag: "Sale",
-  },
-  {
-    id: 2,
-    name: "CycWorld Frontlight Set",
-    price: "$134.95",
-    oldPrice: "$154.95",
-    img: "/assets/accessory2.jpg",
-    tag: "Sale",
-  },
-  {
-    id: 3,
-    name: "CycWorld Carbon Bottle Cage",
-    price: "$39.95",
-    oldPrice: "$44.95",
-    img: "/assets/accessory3.jpg",
-    tag: "New",
-  },
-  {
-    id: 4,
-    name: "CycWorld Gear Groove Computer Mount",
-    price: "$19.95",
-    img: "/assets/accessory4.jpg",
-    tag: "New Stock",
-  },
-  {
-    id: 5,
-    name: "CycWorld GEAR GROOVE Carbon Mount",
-    price: "$134.95",
-    oldPrice: "$154.95",
-    img: "/assets/accessory5.jpg",
-    tag: "Sale",
-  },
-];
-
 const Accessories: React.FC = () => {
+  const [accessories, setAccessories] = useState<any[]>([]);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchAccessories = async () => {
+      try {
+        // const token = localStorage.getItem("token");
+
+        // if (!token) {
+        //   setError("User is not authenticated. Please log in.");
+        //   return;
+        // }
+
+        const response = await axios.get("http://localhost:8080/api/products", {
+          // headers: {
+          //   Authorization: `Bearer ${token}`,
+          // },
+        });
+
+        const accessoryProducts = response.data.filter((item) => item.type === "ACCESSORY");
+
+        setAccessories(accessoryProducts);
+      } catch (error) {
+        console.error("Error fetching accessories:", error);
+        setError("Failed to fetch accessories. Please try again.");
+      }
+    };
+
+    fetchAccessories();
+  }, []);
+
   return (
     <div className={styles.accessories}>
       <Header />
@@ -53,36 +44,32 @@ const Accessories: React.FC = () => {
       <div className={styles.heroSection}>
         <h1>Bike Gear</h1>
         <p>Find everything from pedals, lights, locks, and more for your ride.</p>
-        <button className={styles.primaryButton}>See all gear</button>
       </div>
 
       <section className={styles.productsContainer}>
-        <div className={styles.filters}>
-          <button className={styles.filterButton}>Recommended</button>
-          <button className={styles.filterButton}>Show Filters</button>
-        </div>
 
         <div className={styles.productGrid}>
-          {accessories.map((item) => (
-            <div key={item.id} className={styles.productCard}>
-              {item.tag && <span className={styles.productTag}>{item.tag}</span>}
-              <img src={item.img} alt={item.name} className={styles.productImage} />
-              <h3>{item.name}</h3>
-              <p className={styles.price}>
-                {item.oldPrice && <span className={styles.oldPrice}>{item.oldPrice}</span>}
-                {item.price}
-              </p>
-              <button className={styles.buyButton}>Add to Cart</button>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section className={styles.relatedCategories}>
-        <h2>Related Categories</h2>
-        <div className={styles.categoryButtons}>
-          <button className={styles.categoryButton}>Bike Parts</button>
-          <button className={styles.categoryButton}>Clothing</button>
+          {error ? (
+            <p className={styles.error}>{error}</p>
+          ) : accessories.length === 0 ? (
+            <p>No accessories available.</p>
+          ) : (
+            accessories.map((item) => (
+              <div key={item.id} className={styles.productCard}>
+                {item.tag && <span className={styles.productTag}>{item.tag}</span>}
+                <img
+                  src={item.imageUrls && item.imageUrls.length > 0 ? item.imageUrls[0] : "/assets/default-accessory.jpg"}
+                  alt={item.productName}
+                  className={styles.productImage}
+                />
+                <h3>{item.productName}</h3>
+                <p className={styles.price}>
+                  {new Intl.NumberFormat("vi-VN", { style: "currency", currency: "VND" }).format(item.price)}
+                </p>
+                <Button type="primary">Add to Cart</Button>
+              </div>
+            ))
+          )}
         </div>
       </section>
 
