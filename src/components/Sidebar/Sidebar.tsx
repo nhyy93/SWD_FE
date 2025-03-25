@@ -24,6 +24,7 @@ const Sidebar = () => {
       <ul>
         {isShopOwner ? (
           <>
+            <li><Link to="/">Home</Link></li>
             <li><Link to="/shop-owner/account">👤 Account Management</Link></li>
             <li><Link to="/shop-owner/orders">📦 Order Management</Link></li>
             <li><Link to="/shop-owner/order-status">🚀 Order Status</Link></li>
