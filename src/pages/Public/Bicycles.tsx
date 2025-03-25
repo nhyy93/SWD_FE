@@ -120,8 +120,8 @@ const Bicycles: React.FC = () => {
                 <img
                   src={
                     bike.imageUrls && bike.imageUrls.length > 0
-                      ? bike.imageUrls[0] // URL từ API
-                      : "/assets/default-bike.jpg" // Ảnh mặc định nếu không có
+                      ? bike.imageUrls[0] 
+                      : "/assets/default-bike.jpg" 
                   }
                   alt={bike.productName}
                   className={styles.bikeImage}
