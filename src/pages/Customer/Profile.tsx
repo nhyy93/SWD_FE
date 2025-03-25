@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./Profile.module.css";
-import { 
-  FaUserCircle, FaBox, FaHistory, FaCog, FaHome, FaUsers, 
-  FaBell, FaMapMarkedAlt, FaShoppingCart , FaSave, FaTimes, FaSignOutAlt, 
+import {
+  FaUserCircle, FaBox, FaHistory, FaCog, FaHome, FaUsers,
+  FaBell, FaMapMarkedAlt, FaShoppingCart, FaSave, FaTimes, FaSignOutAlt,
   FaComments
 } from "react-icons/fa";
 
@@ -26,7 +26,7 @@ const Profile: React.FC = () => {
       lastName: localStorage.getItem("lastName") || "",
       email: localStorage.getItem("email") || "Not available",
       address: localStorage.getItem("address") || "",
-      phone: localStorage.getItem("phone") || "Not available", 
+      phone: localStorage.getItem("phone") || "Not available",
       city: localStorage.getItem("city") || "",
       state: localStorage.getItem("state") || "",
       password: localStorage.getItem("password") || "",
@@ -93,7 +93,7 @@ const Profile: React.FC = () => {
           </div>
 
           <div className={styles.formGroup}>
-            <label>Phone</label> 
+            <label>Contact Number</label>
             <input type="text" name="phone" value={userData.phone} onChange={handleInputChange} />
           </div>
 
@@ -102,20 +102,10 @@ const Profile: React.FC = () => {
             <input type="text" name="address" value={userData.address} onChange={handleInputChange} />
           </div>
 
-          <div className={styles.formGroup}>
-            <label>Contact Number</label>
-            <input type="text" name="phone" value={userData.phone} onChange={handleInputChange} />
-          </div>
-
           <div className={styles.row}>
             <div className={styles.formGroup}>
               <label>City</label>
               <input type="text" name="city" value={userData.city} onChange={handleInputChange} />
-            </div>
-
-            <div className={styles.formGroup}>
-              <label>State</label>
-              <input type="text" name="state" value={userData.state} onChange={handleInputChange} />
             </div>
           </div>
 
