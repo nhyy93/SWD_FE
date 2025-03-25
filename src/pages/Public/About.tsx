@@ -1,9 +1,38 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import styles from "./About.module.css";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 
 const About: React.FC = () => {
+  const [bestSeller, setBestSeller] = useState<any | null>(null);
+
+  useEffect(() => {
+    const fetchBestseller = async () => {
+      try {
+        const token = localStorage.getItem("token");
+
+        if (!token) {
+          console.error("User is not authenticated.");
+          return;
+        }
+
+        const response = await axios.get("http://localhost:8080/api/products", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        const sortedProducts = [...response.data].sort((a, b) => a.price - b.price);
+        setBestSeller(sortedProducts[0]); 
+      } catch (error) {
+        console.error("Error fetching bestseller:", error);
+      }
+    };
+
+    fetchBestseller();
+  }, []);
+
   return (
     <>
       <Header />
@@ -31,12 +60,17 @@ const About: React.FC = () => {
           </div>
         </section>
 
-
         <section className={styles.newsSection}>
           <div className={styles.newsText}>
             <h2>News & Stories</h2>
-            <p>After months of planning, Alex finally purchased his dream bike along with top-notch accessories from a popular cycling website. The site not only offered the best gear but also featured a collection of well-loved cycling routes, complete with stories from riders who had conquered them before.</p>
-            <p>Eager to put his new purchase to the test, Alex chose a scenic trail known for its mix of challenging hills and breathtaking views. As he pedaled along the winding roads, he felt a deep connection to every mile—the same routes that had inspired countless cyclists before him. Along the way, he met fellow riders who exchanged tips and shared their own cycling adventures, making his journey even more memorable.</p>
+            <p>
+              After months of planning, Alex finally purchased his dream bike along with top-notch accessories from a popular cycling website. 
+              The site not only offered the best gear but also featured a collection of well-loved cycling routes, complete with stories from riders who had conquered them before.
+            </p>
+            <p>
+              Eager to put his new purchase to the test, Alex chose a scenic trail known for its mix of challenging hills and breathtaking views. 
+              As he pedaled along the winding roads, he felt a deep connection to every mile—the same routes that had inspired countless cyclists before him.
+            </p>
             <button className={styles.newsButton}>Read More</button>
           </div>
           <div className={styles.newsImage}>
@@ -48,19 +82,8 @@ const About: React.FC = () => {
           <h2>Bestsellers</h2>
           <div className={styles.bikeGrid}>
             {[
-              { id: 1, name: "AMIRA SLR 6.0", price: "$3,999", img: "/assets/dc1.jpeg" },
-              {
-                id: 2,
-                name: "SRAM RED AXS RD 12s, DT Swiss ARC 1100 Dicut db",
-                price: "$6,999",
-                img: "/assets/dc2.jpg"
-              },
-              {
-                id: 3,
-                name: "Neuron:ONfly CF 7",
-                price: "$4,399",
-                img: "/assets/xe1.png"
-              },
+              { id: 1, name: "AMIRA SLR 6.0", price: "3.999.000 ₫", img: "/assets/dc1.jpeg" },
+              { id: 2, name: "SRAM RED AXS RD 12s, DT Swiss ARC 1100 Dicut db", price: "6.999.000 ₫", img: "/assets/dc2.jpg" },
             ].map((bike) => (
               <div key={bike.id} className={styles.bikeCard}>
                 <img src={bike.img} alt={bike.name} />
@@ -70,6 +93,19 @@ const About: React.FC = () => {
                 <button>Detail</button>
               </div>
             ))}
+
+            {bestSeller && (
+              <div key={bestSeller.id} className={styles.bikeCard}>
+                <img
+                  src={bestSeller.imageUrls && bestSeller.imageUrls.length > 0 ? bestSeller.imageUrls[0] : "/assets/default-bike.jpg"}
+                  alt={bestSeller.productName}
+                />
+                <h3>{bestSeller.productName}</h3>
+                <p>{bestSeller.description}</p>
+                <p className={styles.price}>{bestSeller.price.toLocaleString("vi-VN")} ₫</p>
+                <button>Detail</button>
+              </div>
+            )}
           </div>
         </section>
       </div>

@@ -4,7 +4,6 @@ import styles from "./Accessories.module.css";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 
-// Dữ liệu sản phẩm mẫu
 const accessories = [
   {
     id: 1,
@@ -51,14 +50,12 @@ const Accessories: React.FC = () => {
     <div className={styles.accessories}>
       <Header />
 
-      {/* Banner chính */}
       <div className={styles.heroSection}>
         <h1>Bike Gear</h1>
         <p>Find everything from pedals, lights, locks, and more for your ride.</p>
         <button className={styles.primaryButton}>See all gear</button>
       </div>
 
-      {/* Bộ lọc và sản phẩm */}
       <section className={styles.productsContainer}>
         <div className={styles.filters}>
           <button className={styles.filterButton}>Recommended</button>
@@ -81,7 +78,6 @@ const Accessories: React.FC = () => {
         </div>
       </section>
 
-      {/* Danh mục liên quan */}
       <section className={styles.relatedCategories}>
         <h2>Related Categories</h2>
         <div className={styles.categoryButtons}>
@@ -90,22 +86,21 @@ const Accessories: React.FC = () => {
         </div>
       </section>
 
-      {/* Related Stories */}
       <section className={styles.relatedStories}>
         <h2>Related Stories</h2>
         <div className={styles.storiesGrid}>
           <div className={styles.storyCard}>
-            <img src="/assets/story1.jpg" alt="Story 1" />
+            <img src="/assets/ac1.jpg" alt="Story 1" />
             <h4>How to choose a bike helmet</h4>
             <p>A guide to choosing the perfect helmet for you.</p>
           </div>
           <div className={styles.storyCard}>
-            <img src="/assets/story2.jpg" alt="Story 2" />
+            <img src="/assets/ac2.avif" alt="Story 2" />
             <h4>How to choose cycling shoes</h4>
             <p>The best guide for selecting the right shoes.</p>
           </div>
           <div className={styles.storyCard}>
-            <img src="/assets/story3.jpg" alt="Story 3" />
+            <img src="/assets/ac3.avif" alt="Story 3" />
             <h4>Flat pedals vs clipless pedals</h4>
             <p>Understanding the best pedals for your needs.</p>
           </div>
