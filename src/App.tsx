@@ -33,8 +33,21 @@ import StaffLayout from "./pages/Staff/StaffLayout";
 
 // Cyclist Pages
 import Profile from "./pages/Customer/Profile";
-
+import SavedRoutes from "./pages/Customer/SavedRoutes";
+import ManageBlogs from "./pages/Customer/ManageBlogs";
+import ShopServicesPage from "./pages/Cyclist/ShopServicePage";
+import CommunicationPage from "./pages/Cyclist/CommunicationPage";
+import FindShopsPage from "./pages/Cyclist/FindShopPage";
+import BuyProductPage from "./pages/Cyclist/BuyProductPage";
+import BookServicesPage from "./pages/Cyclist/BookServicePage";
+import RouteSharingPage from "./pages/Customer/RouteSharingPage";
+import GroupRidePage from "./pages/Customer/GroupRidePage";
 import "bootstrap/dist/css/bootstrap.min.css";
+import NotificationPage from "./pages/Customer/NotificationPage";
+import OrderStatusPage from "./pages/Customer/OrderStatusPage";
+import MyCartPage from "./pages/Customer/MyCartPage";
+import TransactionHistoryPage from "./pages/Customer/TransactionHistoryPage";
+
 
 function App() {
   const [role, setRole] = useState<string | null>(null);
@@ -63,7 +76,13 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/about" element={<About />} />
         <Route path="/profile" element={<Profile />} />
-
+        <Route path="/saved" element={<SavedRoutes />} />
+        <Route path="/blogs" element={<ManageBlogs />} />
+        <Route path="/group-ride" element={<GroupRidePage />} />
+        <Route path="/notifications" element={<NotificationPage />} />
+        <Route path="/orders" element={<OrderStatusPage />} />
+        <Route path="/cart" element={<MyCartPage />} />
+        <Route path="/transactions" element={<TransactionHistoryPage />} />
         {/* Shop Owner Routes */}
         <Route path="/shop-owner/*" element={<ShopOwnerLayout />}>
           <Route path="account" element={<AccountManagement />} />
@@ -81,7 +100,9 @@ function App() {
           <Route path="warehouse" element={<Warehouse />} />
           <Route path="chat" element={<Chat />} />
         </Route>
+        {/* Cyclist Routes */}
 
+<<<<<<< HEAD
         {/* <Route>
           <Route path="/group-ride" element={<GroupRidePage />} />
           <Route path="/route-sharing" element={<RouteSharingPage />} />
@@ -92,6 +113,14 @@ function App() {
           <Route path="/communication" element={<CommunicationPage />} />
         </Route> */}
 
+=======
+        <Route path="/route-sharing" element={<RouteSharingPage />} />
+        <Route path="/book-services" element={<BookServicesPage />} />
+        <Route path="/buy-product" element={<BuyProductPage />} />
+        <Route path="/find-shop" element={<FindShopsPage />} />
+        <Route path="/shop-services" element={<ShopServicesPage />} />
+        <Route path="/communication" element={<CommunicationPage />} />
+>>>>>>> cyclist-nhi
         {/* Redirect Unknown Routes to Home */}
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>

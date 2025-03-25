@@ -60,3 +60,43 @@
     border-radius: 6px;
     border: 1px solid #d1d5db;
 }
+
+.create-post textarea,
+.create-post input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+}
+
+.btn-primary {
+    padding: 10px 15px;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 8px;
+    border: none;
+}
+
+.post-card {
+    background: #f9f9f9;
+    padding: 20px;
+    margin-top: 15px;
+    border-radius: 10px;
+}
+
+.post-image {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.post-actions button {
+    margin-right: 10px;
+    padding: 8px 12px;
+    border-radius: 8px;
+}
+
+.comments-section {
+    margin-top: 10px;
+}

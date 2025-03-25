@@ -1,16 +1,21 @@
 .container {
   display: flex;
-  height: 100vh;
+  align-items: stretch;
+  min-height: 100vh;
   background: #edf1f1;
 }
+
 
 .sidebar {
   width: 250px;
   background: #161616;
   color: white;
   padding: 20px;
-  display: flex;
-  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  z-index: 999;
 }
 
 .logo {
@@ -49,14 +54,17 @@
 
 .profileContent {
   flex: 1;
+  margin-left: 290px;
   padding: 40px;
   background: white;
   border-radius: 12px;
-  margin: 20px;
+  margin-top: 20px;
+  margin-right: 20px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .profileForm {
+
   background: white;
   padding: 20px;
   border-radius: 10px;
@@ -102,7 +110,9 @@
   margin-top: 20px;
 }
 
-.cancelBtn, .saveBtn, .logoutBtn {
+.cancelBtn,
+.saveBtn,
+.logoutBtn {
   padding: 10px 20px;
   border-radius: 8px;
   cursor: pointer;
@@ -111,6 +121,76 @@
   text-align: center;
 }
 
-.cancelBtn { background: red; color: white; }
-.saveBtn { background: orange; color: white; }
-.logoutBtn { background: blue; color: white; }
+.cancelBtn {
+  background: red;
+  color: white;
+}
+
+.saveBtn {
+  background: orange;
+  color: white;
+}
+
+.logoutBtn {
+  background: blue;
+  color: white;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.mainContent {
+  margin-left: 270px;
+  padding: 40px;
+  background: #f5f5f5;
+  width: calc(100% - 270px);
+}
+
+.notificationContainer {
+  margin-left: 270px;
+  background: #f5f5f5;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.notificationBox {
+  background: #fff;
+  width: 600px;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.notiList {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.notiItem {
+  background: #e6f3ff;
+  padding: 15px 20px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.notiItem p {
+  margin: 0;
+  font-size: 16px;
+}
+
+.notiItem small {
+  color: #555;
+  font-size: 14px;
+}
