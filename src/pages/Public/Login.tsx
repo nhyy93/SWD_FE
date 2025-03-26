@@ -31,7 +31,7 @@ const Login: React.FC = () => {
 
       
       if (response.data.role === "ADMIN") {
-        navigate("/admin/dashboard");
+        setError("You do not have permission to access this page.");
       } else if (response.data.role === "SHOP_OWNER") {
         navigate("/shop-owner/account");
       } else if (response.data.role === "STAFF") {
@@ -39,7 +39,9 @@ const Login: React.FC = () => {
       } else {
         navigate("/");
       }
-      window.location.reload();
+      if (response.data.role !== "ADMIN") {
+        window.location.reload();
+    }
     } catch (err) {
       setError("Invalid username or password");
     }
