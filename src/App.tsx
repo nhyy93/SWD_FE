@@ -48,7 +48,6 @@ import OrderStatusPage from "./pages/Customer/OrderStatusPage";
 import MyCartPage from "./pages/Customer/MyCartPage";
 import TransactionHistoryPage from "./pages/Customer/TransactionHistoryPage";
 
-
 function App() {
   const [role, setRole] = useState<string | null>(null);
 
@@ -102,25 +101,12 @@ function App() {
         </Route>
         {/* Cyclist Routes */}
 
-<<<<<<< HEAD
-        {/* <Route>
-          <Route path="/group-ride" element={<GroupRidePage />} />
-          <Route path="/route-sharing" element={<RouteSharingPage />} />
-          <Route path="/book-services" element={<BookServices Page />} />
-          <Route path="/buy-product" element={<Buy ProductPage />} />
-          <Route path="/find-shop" element={<FindShopsPage />} />
-          <Route path="/shop-services" element={<ShopServicesPage />} />
-          <Route path="/communication" element={<CommunicationPage />} />
-        </Route> */}
-
-=======
         <Route path="/route-sharing" element={<RouteSharingPage />} />
         <Route path="/book-services" element={<BookServicesPage />} />
         <Route path="/buy-product" element={<BuyProductPage />} />
         <Route path="/find-shop" element={<FindShopsPage />} />
         <Route path="/shop-services" element={<ShopServicesPage />} />
         <Route path="/communication" element={<CommunicationPage />} />
->>>>>>> cyclist-nhi
         {/* Redirect Unknown Routes to Home */}
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
