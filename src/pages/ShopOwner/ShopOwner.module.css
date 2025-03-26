@@ -579,3 +579,16 @@ h1 {
 .submitBtn:hover {
   background: #34495e;
 }
+
+.error {
+  color: red;
+  font-size: 14px;
+  margin: 10px 0;
+}
+
+.noData {
+  text-align: center;
+  font-size: 16px;
+  color: gray;
+  padding: 20px;
+}
