@@ -1,5 +1,7 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import styles from "./Sidebar.module.css";
+import { FaHome } from "react-icons/fa";
+
 
 const Sidebar = () => {
   const location = useLocation();
@@ -24,6 +26,12 @@ const Sidebar = () => {
       <ul>
         {isShopOwner ? (
           <>
+            <li>
+              <Link to="/">
+                <FaHome size={18} style={{ marginRight: "5px" }} />
+                Home
+              </Link>
+            </li>
             <li><Link to="/shop-owner/account">👤 Account Management</Link></li>
             <li><Link to="/shop-owner/orders">📦 Order Management</Link></li>
             <li><Link to="/shop-owner/order-status">🚀 Order Status</Link></li>

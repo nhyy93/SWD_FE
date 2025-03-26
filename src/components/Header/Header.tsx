@@ -9,22 +9,28 @@ const AppHeader: React.FC = () => {
   const [email, setEmail] = useState("");
   const [showDropdown, setShowDropdown] = useState(false);
   const navigate = useNavigate();
+  const [role, setRole] = useState("");
+
 
   useEffect(() => {
     const token = localStorage.getItem("token");
     const storedUsername = localStorage.getItem("username") || "";
     const storedEmail = localStorage.getItem("email") || "";
+    const storedRole = localStorage.getItem("role") || "";
 
     if (token) {
       setIsLoggedIn(true);
       setUsername(storedUsername);
       setEmail(storedEmail);
+      setRole(storedRole);
     } else {
       setIsLoggedIn(false);
       setUsername("");
       setEmail("");
+      setRole("");
     }
   }, []);
+
 
   const handleLogout = () => {
     localStorage.clear();
@@ -65,14 +71,23 @@ const AppHeader: React.FC = () => {
               <div className={styles.dropdownMenu}>
                 <p className={styles.username}>{username}</p>
                 <p className={styles.email}>{email}</p>
-                <Link to="/profile" className={styles.dropdownItem}>
-                  View Profile
-                </Link>
+
+                {role === "SHOP_OWNER" ? (
+                  <Link to="/shop-owner/account" className={styles.dropdownItem}>
+                    View Dashboard
+                  </Link>
+                ) : (
+                  <Link to="/profile" className={styles.dropdownItem}>
+                    View Profile
+                  </Link>
+                )}
+
                 <button onClick={handleLogout} className={styles.logoutBtn}>
                   Logout
                 </button>
               </div>
             )}
+
           </div>
         ) : (
           <>

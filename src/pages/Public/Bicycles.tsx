@@ -10,6 +10,8 @@ import Footer from "../../components/Footer/Footer";
 import heroImage from "../../assets/anh2.webp";
 import styles from "./Bicycles.module.css";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
 
 
 const stories = [
@@ -52,35 +54,47 @@ const Bicycles: React.FC = () => {
   const [moreOptions, setMoreOptions] = useState<any[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [bestSellers, setBestSellers] = useState<any[]>([]);
+  const navigate = useNavigate();
 
+  const handleDetailClick = (bikeId: number) => {
+    const token = localStorage.getItem("token");
+  
+    if (!token) {
+      navigate("/login");
+    } else {
+      navigate(`/product/${bikeId}`); 
+    }
+  };
+  
+
+  const handleCheckAvailability = (bikeId: number) => {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      navigate("/login");
+    } else {
+      navigate(`/bicycle/${bikeId}`);
+    }
+  };
 
   useEffect(() => {
     const fetchBicycles = async () => {
       try {
-        const token = localStorage.getItem("token");
-
-        if (!token) {
-          setError("User is not authenticated. Please log in.");
-          return;
-        }
-
         const response = await axios.get("http://localhost:8080/api/products", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
         });
 
         const products = response.data;
 
-        const sortedProducts = [...products].sort((a, b) => a.price - b.price);
+        const bikeProducts = products.filter((product) => product.type === "BIKE");
 
-        setSellingFast(sortedProducts.slice(0, 5));
+        const sortedBikes = [...bikeProducts].sort((a, b) => a.price - b.price);
 
-        setBestSellers(sortedProducts.slice(0, 2)); 
+        setBicycles(sortedBikes);
+        setSellingFast(sortedBikes.slice(0, 5));
+        setBestSellers(sortedBikes.slice(0, 2));
+        setBestForLess(sortedBikes[0]);
+        setMoreOptions(sortedBikes);
 
-        setBestForLess(sortedProducts[0]);
-
-        setMoreOptions(products);
       } catch (error) {
         console.error("Error fetching products:", error);
         setError("Failed to fetch products. Please try again.");
@@ -89,6 +103,7 @@ const Bicycles: React.FC = () => {
 
     fetchBicycles();
   }, []);
+
 
   return (
     <div className={styles.bicycles}>
@@ -100,7 +115,6 @@ const Bicycles: React.FC = () => {
         <Button type="primary" size="large">See the bikes</Button>
       </div>
 
-      {/* Selling Fast Section */}
       <section className={styles.section}>
         <h2>Selling Fast</h2>
         <Swiper
@@ -118,8 +132,8 @@ const Bicycles: React.FC = () => {
                 <img
                   src={
                     bike.imageUrls && bike.imageUrls.length > 0
-                      ? bike.imageUrls[0] // URL từ API
-                      : "/assets/default-bike.jpg" // Ảnh mặc định nếu không có
+                      ? bike.imageUrls[0]
+                      : "/assets/default-bike.jpg"
                   }
                   alt={bike.productName}
                   className={styles.bikeImage}
@@ -130,7 +144,10 @@ const Bicycles: React.FC = () => {
                 <p className={styles.price}>
                   {new Intl.NumberFormat("vi-VN", { style: "currency", currency: "VND" }).format(bike.price)}
                 </p>
-                <Button type="primary">Detail</Button>
+                <Button type="primary" onClick={() => handleDetailClick(bike.id)}>
+                  Detail
+                </Button>
+
               </Card>
             </SwiperSlide>
           ))}
@@ -153,7 +170,6 @@ const Bicycles: React.FC = () => {
         </div>
       </div>
 
-      {/* Best for Less Section */}
       {bestForLess && (
         <div className={styles.newBikeDisplay}>
           <Card hoverable className={styles.bikeDetailCard}>
@@ -176,7 +192,10 @@ const Bicycles: React.FC = () => {
                 <p className={styles.price}>
                   {new Intl.NumberFormat("vi-VN", { style: "currency", currency: "VND" }).format(bestForLess.price)}
                 </p>
-                <Button type="primary">Check Availability</Button>
+                <Button type="primary" onClick={() => handleCheckAvailability(bestForLess.id)}>
+                  Check Availability
+                </Button>
+
               </div>
             </div>
           </Card>
@@ -184,7 +203,6 @@ const Bicycles: React.FC = () => {
       )}
 
 
-      {/* More Options Section */}
       <div className={styles.productListSection}>
         <h2>More Options</h2>
         <div className={styles.productGrid}>
@@ -203,7 +221,10 @@ const Bicycles: React.FC = () => {
                 <p className={styles.price}>
                   {new Intl.NumberFormat("vi-VN", { style: "currency", currency: "VND" }).format(bike.price)}
                 </p>
-                <Button type="primary">View Details</Button>
+                <Button type="primary" onClick={() => handleDetailClick(bike.id)}>
+                  View Details
+                </Button>
+
               </div>
             </Card>
           ))}
