@@ -34,6 +34,8 @@ const Login: React.FC = () => {
         navigate("/admin/dashboard");
       } else if (response.data.role === "SHOP_OWNER") {
         navigate("/shop-owner/account");
+      } else if (response.data.role === "STAFF") {
+        navigate("/staff/delivery");  
       } else {
         navigate("/");
       }

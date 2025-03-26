@@ -76,11 +76,18 @@ const AppHeader: React.FC = () => {
                   <Link to="/shop-owner/account" className={styles.dropdownItem}>
                     View Dashboard
                   </Link>
+                ) : role === "STAFF" ? (
+                  <Link to="/staff/delivery" className={styles.dropdownItem}>
+                    View Task
+                  </Link>
+                ) : role === "ADMIN" ? (
+                  <span className={styles.noAccess}>You do not have access</span>
                 ) : (
                   <Link to="/profile" className={styles.dropdownItem}>
                     View Profile
                   </Link>
                 )}
+
 
                 <button onClick={handleLogout} className={styles.logoutBtn}>
                   Logout
