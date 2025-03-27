@@ -7,7 +7,6 @@
     background-color: rgb(245, 245, 245);
 }
 
-/* Hero Section */
 .heroSection {
     background-size: cover;
     background-repeat: no-repeat;
@@ -30,7 +29,6 @@
     color: #fff;
 }
 
-/* General Section */
 .section {
     max-width: 1200px;
     margin: auto;

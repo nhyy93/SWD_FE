@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 import styles from "./Profile.module.css";
 import {
   FaUserCircle, FaBox, FaHistory, FaHome, FaUsers,
@@ -9,26 +10,19 @@ import {
 const Profile: React.FC = () => {
   const navigate = useNavigate();
   const [userData, setUserData] = useState({
-    firstName: "",
-    lastName: "",
+    username: "",
     email: "",
     address: "",
     phone: "",
-    city: "",
-    state: "",
-    password: "",
   });
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const storedUser = {
-      firstName: localStorage.getItem("firstName") || "",
-      lastName: localStorage.getItem("lastName") || "",
+      username: localStorage.getItem("username") || "",
       email: localStorage.getItem("email") || "Not available",
       address: localStorage.getItem("address") || "",
       phone: localStorage.getItem("phone") || "Not available",
-      city: localStorage.getItem("city") || "",
-      state: localStorage.getItem("state") || "",
-      password: localStorage.getItem("password") || "",
     };
     setUserData(storedUser);
   }, []);
@@ -37,11 +31,30 @@ const Profile: React.FC = () => {
     setUserData({ ...userData, [e.target.name]: e.target.value });
   };
 
-  const handleSave = () => {
-    Object.keys(userData).forEach((key) => {
-      localStorage.setItem(key, userData[key as keyof typeof userData]);
-    });
-    alert("Profile updated successfully!");
+  const handleSave = async () => {
+    try {
+      const token = localStorage.getItem("token");
+      if (!token) {
+        setError("Unauthorized: Please log in.");
+        return;
+      }
+
+      await axios.put("http://localhost:8080/api/user", userData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      });
+
+      Object.keys(userData).forEach((key) => {
+        localStorage.setItem(key, userData[key as keyof typeof userData]);
+      });
+
+      alert("Profile updated successfully!");
+    } catch (error) {
+      console.error("Error updating profile:", error);
+      setError("Failed to update profile.");
+    }
   };
 
   const handleLogout = () => {
@@ -63,24 +76,20 @@ const Profile: React.FC = () => {
           <li><FaBox /><Link to="/orders">Orders Status</Link></li>
           <li><FaHistory /><Link to="/transactions">Transaction History</Link></li>
           <li><FaComments /><Link to="/blogs">Manage Blogs</Link></li>
+          <li className={styles.logoutBtn}><FaSignOutAlt /><button onClick={handleLogout}>Logout</button></li>
         </ul>
       </aside>
 
       <main className={styles.profileContent}>
-        <h2>Edit Profile</h2>
+        <h2>Profile</h2>
         <div className={styles.profileForm}>
           <div className={styles.avatarSection}>
             <img src="https://via.placeholder.com/100" alt="User Avatar" className={styles.avatar} />
           </div>
 
           <div className={styles.formGroup}>
-            <label>First Name</label>
-            <input type="text" name="firstName" value={userData.firstName} onChange={handleInputChange} />
-          </div>
-
-          <div className={styles.formGroup}>
-            <label>Last Name</label>
-            <input type="text" name="lastName" value={userData.lastName} onChange={handleInputChange} />
+            <label>Username</label>
+            <input type="text" name="username" value={userData.username} onChange={handleInputChange} />
           </div>
 
           <div className={styles.formGroup}>
@@ -98,27 +107,12 @@ const Profile: React.FC = () => {
             <input type="text" name="address" value={userData.address} onChange={handleInputChange} />
           </div>
 
-          <div className={styles.row}>
-            <div className={styles.formGroup}>
-              <label>City</label>
-              <input type="text" name="city" value={userData.city} onChange={handleInputChange} />
-            </div>
-          </div>
-
-          <div className={styles.formGroup}>
-            <label>Password</label>
-            <input type="password" name="password" value={userData.password} onChange={handleInputChange} />
-          </div>
-
           <div className={styles.buttonGroup}>
             <button className={styles.cancelBtn} onClick={() => navigate("/")}>
               <FaTimes /> Cancel
             </button>
             <button className={styles.saveBtn} onClick={handleSave}>
               <FaSave /> Save
-            </button>
-            <button className={styles.logoutBtn} onClick={handleLogout}>
-              <FaSignOutAlt /> Logout
             </button>
           </div>
         </div>
