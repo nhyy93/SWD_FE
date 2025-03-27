@@ -15,7 +15,7 @@ const AccountManagement = () => {
           return;
         }
 
-        const response = await axios.get("http://localhost:8080/api/shops/1/employees", {
+        const response = await axios.get("http://localhost:8080/api/shops/employees", {
           headers: {
             Authorization: `Bearer ${token}`,
             "Content-Type": "application/json",

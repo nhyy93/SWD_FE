@@ -28,6 +28,7 @@ const Login: React.FC = () => {
       localStorage.setItem("username", response.data.username);
       localStorage.setItem("email", response.data.email);
       localStorage.setItem("phone", response.data.phone || "Not available");
+      localStorage.setItem("shopId", response.data.shopId);
 
       
       if (response.data.role === "ADMIN") {
