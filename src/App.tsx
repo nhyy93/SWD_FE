@@ -16,7 +16,6 @@ import Services from "./pages/Public/Services";
 import Accessories from "./pages/Public/Accessories";
 import ProductDetail from "./pages/Public/ProductDetail";
 
-
 // Shop Owner Pages
 import AccountManagement from "./pages/ShopOwner/AccountManagement";
 import OrderManagement from "./pages/ShopOwner/OrderManagement";
@@ -74,10 +73,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/about" element={<About />} />
         <Route path="/profile" element={<Profile />} />
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> cyclist-nhi
+
         <Route path="/saved" element={<SavedRoutes />} />
         <Route path="/blogs" element={<ManageBlogs />} />
         <Route path="/group-ride" element={<GroupRidePage />} />
@@ -85,18 +81,10 @@ function App() {
         <Route path="/orders" element={<OrderStatusPage />} />
         <Route path="/cart" element={<MyCartPage />} />
         <Route path="/transactions" element={<TransactionHistoryPage />} />
+
         {/* Shop Owner Routes */}
-<<<<<<< HEAD
-=======
+
         <Route path="/product/:id" element={<ProductDetail />} />
-
-
->>>>>>> main
-=======
-        <Route path="/product/:id" element={<ProductDetail />} />
-
-
->>>>>>> cyclist-nhi
         <Route path="/shop-owner/*" element={<ShopOwnerLayout />}>
           <Route path="account" element={<AccountManagement />} />
           <Route path="orders" element={<OrderManagement />} />
@@ -112,24 +100,16 @@ function App() {
           <Route path="warehouse" element={<Warehouse />} />
           <Route path="chat" element={<Chat />} />
         </Route>
-        {/* Cyclist Routes */}
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> cyclist-nhi
+        {/* Cyclist Routes */}
         <Route path="/route-sharing" element={<RouteSharingPage />} />
         <Route path="/book-services" element={<BookServicesPage />} />
         <Route path="/buy-product" element={<BuyProductPage />} />
         <Route path="/find-shop" element={<FindShopsPage />} />
         <Route path="/shop-services" element={<ShopServicesPage />} />
         <Route path="/communication" element={<CommunicationPage />} />
+
         {/* Redirect Unknown Routes to Home */}
-<<<<<<< HEAD
-=======
->>>>>>> main
-=======
->>>>>>> cyclist-nhi
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </Router>
