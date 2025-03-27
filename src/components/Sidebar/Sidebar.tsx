@@ -41,6 +41,12 @@ const Sidebar = () => {
           </>
         ) : (
           <>
+          <li>
+              <Link to="/">
+                <FaHome size={18} style={{ marginRight: "5px" }} />
+                Home
+              </Link>
+            </li>
             <li><Link to="/staff/chat">💬 Customer Chat</Link></li>
             <li><Link to="/staff/order-processing">📦 Order Processing</Link></li>
             <li><Link to="/staff/delivery">🚚 Delivery Management</Link></li>
