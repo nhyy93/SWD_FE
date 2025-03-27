@@ -6,6 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
 import { Form, Row, Col, Card, Button, InputGroup, Alert } from "react-bootstrap"
 import { MapPin, Clock, CheckCircle2 } from "lucide-react"
+import axios from "axios"
 
 const formSchema = z.object({
   username: z.string().min(3, { message: "Username must be at least 3 characters" }),
@@ -45,15 +46,13 @@ export function CreateRouteForm() {
     },
   })
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    // Tạo dữ liệu Routes
+  const onSubmit = async (values: z.infer<typeof formSchema>) => {
     const routeData = {
       ...values,
     }
 
-    // Tạo dữ liệu RouteDetail
     const routeDetailData = {
-      route_id: 1, // Giả sử ID mới
+      route_id: 1,
       route_type: values.route_type,
       path_data: pathData,
     }
@@ -61,15 +60,26 @@ export function CreateRouteForm() {
     console.log("Route Data:", routeData)
     console.log("Route Detail Data:", routeDetailData)
 
-    // Đây là nơi bạn sẽ gửi dữ liệu đến API
-    setIsSubmitted(true)
+    try {
 
-    // Reset form sau 3 giây
-    setTimeout(() => {
-      setIsSubmitted(false)
-    }, 3000)
+      const response = await axios.post("http://localhost:8080/api/routes", routeData)
+      console.log("Route created successfully:", response.data)
+
+
+      const detailResponse = await axios.post("http://localhost:8080/api/routes/detail", routeDetailData)
+      console.log("Route Detail created successfully:", detailResponse.data)
+
+      setIsSubmitted(true)
+
+
+      setTimeout(() => {
+        setIsSubmitted(false)
+      }, 3000)
+    } catch (error) {
+      console.error("Error creating Route:", error)
+      alert("An error occurred while creating the route.")
+    }
   }
-
   // Giả lập thêm điểm vào path_data
   const addRandomPoint = () => {
     // Tạo một điểm ngẫu nhiên giữa Hà Nội và Hạ Long

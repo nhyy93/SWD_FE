@@ -1,120 +1,11 @@
-"use client"
-
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Row, Col, Card, Badge, Button, Form, InputGroup, Alert } from "react-bootstrap"
 import { MapPin, Clock, TrendingUp, Search, Lock, Unlock, Share, Eye, Heart, MessageSquare } from "lucide-react"
 import { RouteDetailsModal } from "./RouteDetailModal"
 import { ShareRouteModal } from "./ShareRouteMModal"
+import axios from "axios"
 
-// Mock data for routes
-const mockRoutes = [
-  {
-    id: "route1",
-    name: "Downtown Loop",
-    description: "A scenic ride through the heart of downtown with minimal traffic",
-    distance: 15,
-    estimatedTime: "45 min",
-    elevation: 120,
-    difficulty: "Easy",
-    startLocation: "Central Park",
-    destination: "Downtown Square",
-    createdBy: {
-      id: "user1",
-      name: "John Doe",
-      avatar: "/placeholder.svg?height=40&width=40",
-    },
-    likes: 24,
-    comments: 5,
-    isPublic: true,
-    tags: ["Urban", "Scenic", "Beginner-friendly"],
-    createdAt: "2025-02-15T10:30:00",
-  },
-  {
-    id: "route2",
-    name: "Mountain Challenge",
-    description: "Challenging mountain trails with steep climbs and technical descents",
-    distance: 35,
-    estimatedTime: "3 hours",
-    elevation: 850,
-    difficulty: "Hard",
-    startLocation: "Mountain Base Station",
-    destination: "Summit Viewpoint",
-    createdBy: {
-      id: "user2",
-      name: "Jane Smith",
-      avatar: "/placeholder.svg?height=40&width=40",
-    },
-    likes: 42,
-    comments: 12,
-    isPublic: false,
-    tags: ["Mountain", "Challenging", "Technical"],
-    createdAt: "2025-02-10T08:15:00",
-  },
-  {
-    id: "route3",
-    name: "Coastal Route",
-    description: "Beautiful coastal ride with ocean views and gentle hills",
-    distance: 20,
-    estimatedTime: "1 hour 15 min",
-    elevation: 250,
-    difficulty: "Medium",
-    startLocation: "Beach Parking Lot",
-    destination: "Lighthouse Point",
-    createdBy: {
-      id: "user3",
-      name: "Alex Johnson",
-      avatar: "/placeholder.svg?height=40&width=40",
-    },
-    likes: 36,
-    comments: 8,
-    isPublic: true,
-    tags: ["Coastal", "Scenic", "Moderate"],
-    createdAt: "2025-02-20T14:45:00",
-  },
-  {
-    id: "route4",
-    name: "City Lights Tour",
-    description: "Evening ride through the city's most beautiful illuminated landmarks",
-    distance: 18,
-    estimatedTime: "1 hour",
-    elevation: 150,
-    difficulty: "Easy",
-    startLocation: "City Hall",
-    destination: "Riverside Park",
-    createdBy: {
-      id: "user4",
-      name: "Sam Wilson",
-      avatar: "/placeholder.svg?height=40&width=40",
-    },
-    likes: 29,
-    comments: 7,
-    isPublic: true,
-    tags: ["Urban", "Night", "Leisure"],
-    createdAt: "2025-02-25T19:30:00",
-  },
-  {
-    id: "route5",
-    name: "Forest Trail Adventure",
-    description: "Peaceful ride through dense forest trails with wildlife spotting opportunities",
-    distance: 25,
-    estimatedTime: "2 hours",
-    elevation: 320,
-    difficulty: "Medium",
-    startLocation: "Forest Entrance",
-    destination: "Lake Viewpoint",
-    createdBy: {
-      id: "user5",
-      name: "Emily Chen",
-      avatar: "/placeholder.svg?height=40&width=40",
-    },
-    likes: 18,
-    comments: 3,
-    isPublic: true,
-    tags: ["Forest", "Nature", "Peaceful"],
-    createdAt: "2025-03-05T09:20:00",
-  },
-]
-
+// Route list component
 export function RoutesList() {
   const [searchQuery, setSearchQuery] = useState("")
   const [selectedRoute, setSelectedRoute] = useState<any>(null)
@@ -122,8 +13,28 @@ export function RoutesList() {
   const [shareModalOpen, setShareModalOpen] = useState(false)
   const [activeFilter, setActiveFilter] = useState("all")
   const [activeDifficulty, setActiveDifficulty] = useState("all")
+  const [routes, setRoutes] = useState<any[]>([])
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
-  const filteredRoutes = mockRoutes.filter((route) => {
+  useEffect(() => {
+    const fetchRoutes = async () => {
+      setLoading(true)
+      try {
+        const response = await axios.get("http://localhost:8080/api/routes")
+        setRoutes(response.data)
+      } catch (err) {
+        console.error("Error fetching routes:", err)
+        setError("Failed to load routes. Please try again later.")
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchRoutes()
+  }, [])
+
+  const filteredRoutes = routes.filter((route) => {
     const matchesSearch =
       route.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       route.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -173,8 +84,16 @@ export function RoutesList() {
     }
   }
 
+  if (loading) {
+    return <div>Loading...</div>
+  }
+
   return (
     <div className="mt-4">
+      {/* Error message */}
+      {error && <Alert variant="danger">{error}</Alert>}
+
+      {/* Search and filter options */}
       <Row className="mb-4">
         <Col md={6}>
           <InputGroup>
@@ -205,6 +124,7 @@ export function RoutesList() {
         </Col>
       </Row>
 
+      {/* Display filtered routes */}
       {filteredRoutes.length === 0 ? (
         <Alert variant="info" className="text-center py-4">
           <p className="mb-0">No routes found matching your search criteria.</p>
@@ -301,6 +221,7 @@ export function RoutesList() {
         </Row>
       )}
 
+      {/* Modals for route details and sharing */}
       {selectedRoute && (
         <>
           <RouteDetailsModal show={detailsModalOpen} onHide={() => setDetailsModalOpen(false)} route={selectedRoute} />
@@ -310,4 +231,3 @@ export function RoutesList() {
     </div>
   )
 }
-
