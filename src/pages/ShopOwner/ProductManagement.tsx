@@ -8,14 +8,7 @@ const { Option } = Select;
 const ProductManagement: React.FC = () => {
     const [products, setProducts] = useState<any[]>([]);
     const [loading, setLoading] = useState(false);
-    const [modalVisible, setModalVisible] = useState(false);
-    const [newProduct, setNewProduct] = useState({
-        productName: "",
-        description: "",
-        price: "",
-        type: "ACCESSORY",
-        imageUrls: [],
-    });
+    
 
     useEffect(() => {
         fetchProducts();

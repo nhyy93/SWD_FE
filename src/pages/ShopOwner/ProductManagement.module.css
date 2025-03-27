@@ -14,11 +14,7 @@
     gap: 10px;
   }
   
-  h2::before {
-    content: "📦";
-    font-size: 1.8rem;
-  }
-  
+
   .addBtn {
     background: #1890ff;
     color: white;
