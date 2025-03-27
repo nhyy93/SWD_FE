@@ -3,35 +3,37 @@ import axios from "axios";
 import styles from "./About.module.css";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
+import { useNavigate } from "react-router-dom";
 
 const About: React.FC = () => {
-  const [bestSeller, setBestSeller] = useState<any | null>(null);
+  const [bestSellers, setBestSellers] = useState<any[]>([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchBestseller = async () => {
+    const fetchBestsellers = async () => {
       try {
-        const token = localStorage.getItem("token");
-
-        if (!token) {
-          console.error("User is not authenticated.");
-          return;
-        }
-
-        const response = await axios.get("http://localhost:8080/api/products", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-
-        const sortedProducts = [...response.data].sort((a, b) => a.price - b.price);
-        setBestSeller(sortedProducts[0]); 
+        const response = await axios.get("http://localhost:8080/api/products");
+        const products = response.data;
+        const bikeProducts = products.filter((product) => product.type === "BIKE");
+        const sortedBikes = [...bikeProducts].sort((a, b) => a.price - b.price);
+        setBestSellers(sortedBikes.slice(0, 2));
       } catch (error) {
-        console.error("Error fetching bestseller:", error);
+        console.error("Error fetching bestsellers:", error);
       }
     };
 
-    fetchBestseller();
+    fetchBestsellers();
   }, []);
+
+  const handleDetailClick = (productId: number) => {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      navigate("/login");
+    } else {
+      navigate(`/product/${productId}`);
+    }
+  };
 
   return (
     <>
@@ -81,31 +83,18 @@ const About: React.FC = () => {
         <section className={styles.bestsellersSection}>
           <h2>Bestsellers</h2>
           <div className={styles.bikeGrid}>
-            {[
-              { id: 1, name: "AMIRA SLR 6.0", price: "3.999.000 ₫", img: "/assets/dc1.jpeg" },
-              { id: 2, name: "SRAM RED AXS RD 12s, DT Swiss ARC 1100 Dicut db", price: "6.999.000 ₫", img: "/assets/dc2.jpg" },
-            ].map((bike) => (
+            {bestSellers.map((bike) => (
               <div key={bike.id} className={styles.bikeCard}>
-                <img src={bike.img} alt={bike.name} />
-                <h3>{bike.name}</h3>
-                <p>Shimano 105 R7100, 12-speed, DT Swiss Arc 1100</p>
-                <p className={styles.price}>{bike.price}</p>
-                <button>Detail</button>
+                <img
+                  src={bike.imageUrls && bike.imageUrls.length > 0 ? bike.imageUrls[0] : "/assets/default-bike.jpg"}
+                  alt={bike.productName}
+                />
+                <h3>{bike.productName}</h3>
+                <p>{bike.description}</p>
+                <p className={styles.price}>{bike.price.toLocaleString("vi-VN")} ₫</p>
+                <button onClick={() => handleDetailClick(bike.id)}>Detail</button>
               </div>
             ))}
-
-            {bestSeller && (
-              <div key={bestSeller.id} className={styles.bikeCard}>
-                <img
-                  src={bestSeller.imageUrls && bestSeller.imageUrls.length > 0 ? bestSeller.imageUrls[0] : "/assets/default-bike.jpg"}
-                  alt={bestSeller.productName}
-                />
-                <h3>{bestSeller.productName}</h3>
-                <p>{bestSeller.description}</p>
-                <p className={styles.price}>{bestSeller.price.toLocaleString("vi-VN")} ₫</p>
-                <button>Detail</button>
-              </div>
-            )}
           </div>
         </section>
       </div>

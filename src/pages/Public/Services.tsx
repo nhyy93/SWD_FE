@@ -1,16 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./Services.module.css";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 
-const isLoggedIn = false; 
-
 const Services: React.FC = () => {
   const navigate = useNavigate();
+  const [token, setToken] = useState<string | null>(null);
+
+  useEffect(() => {
+    const storedToken = localStorage.getItem("token");
+    setToken(storedToken);
+  }, []);
 
   const handleButtonClick = (route: string) => {
-    if (!isLoggedIn) {
+    if (!token) {
       navigate("/login"); 
     } else {
       navigate(route); 
@@ -48,7 +52,7 @@ const Services: React.FC = () => {
           </div>
         </div>
 
-        {!isLoggedIn && (
+        {!token && (
           <p className={styles.notice}>
             <strong>Note:</strong> You need to <Link to="/login">log in</Link> to purchase products or book services.
           </p>
