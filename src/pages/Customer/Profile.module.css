@@ -64,7 +64,6 @@
 }
 
 .profileForm {
-
   background: white;
   padding: 20px;
   border-radius: 10px;
@@ -111,8 +110,7 @@
 }
 
 .cancelBtn,
-.saveBtn,
-.logoutBtn {
+.saveBtn {
   padding: 10px 20px;
   border-radius: 8px;
   cursor: pointer;
@@ -120,6 +118,23 @@
   text-decoration: none;
   text-align: center;
 }
+
+.logoutBtn {
+  margin-top: 20px;
+  background: #ff3b3b;
+  text-align: center;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.logoutBtn button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
 
 .cancelBtn {
   background: red;

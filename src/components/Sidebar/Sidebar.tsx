@@ -33,6 +33,7 @@ const Sidebar = () => {
               </Link>
             </li>
             <li><Link to="/shop-owner/account">👤 Account Management</Link></li>
+            <li><Link to="/shop-owner/products">📦 Product Management</Link></li>
             <li><Link to="/shop-owner/orders">📦 Order Management</Link></li>
             <li><Link to="/shop-owner/order-status">🚀 Order Status</Link></li>
             <li><Link to="/shop-owner/revenue">📊 Revenue Statistics</Link></li>

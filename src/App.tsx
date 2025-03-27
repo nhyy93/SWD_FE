@@ -42,6 +42,7 @@ import NotificationPage from "./pages/Customer/NotificationPage";
 import OrderStatusPage from "./pages/Customer/OrderStatusPage";
 import MyCartPage from "./pages/Customer/MyCartPage";
 import TransactionHistoryPage from "./pages/Customer/TransactionHistoryPage";
+import ProductManagement from "./pages/ShopOwner/ProductManagement";
 
 
 function App() {
@@ -79,6 +80,7 @@ function App() {
 
         <Route path="/shop-owner/*" element={<ShopOwnerLayout />}>
           <Route path="account" element={<AccountManagement />} />
+          <Route path="products" element={<ProductManagement />} />
           <Route path="orders" element={<OrderManagement />} />
           <Route path="order-status" element={<OrderStatus />} />
           <Route path="revenue" element={<RevenueStats />} />
