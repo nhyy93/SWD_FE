@@ -1,113 +1,33 @@
-"use client"
-
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Row, Col, Card, Badge, Button, Form, InputGroup, Nav, Modal } from "react-bootstrap"
 import { Calendar, Clock, MapPin, Users, Search, Lock, Unlock } from "lucide-react"
+import axios from "axios"
 import { JoinRideForm } from "./JoinRideForm"
 
-// Mock data for group rides
-const mockGroupRides = [
-  {
-    id: "1",
-    title: "Morning City Ride",
-    description: "A casual ride through downtown, perfect for beginners",
-    startTime: "2025-03-25T07:30:00",
-    finishTime: "2025-03-25T09:30:00",
-    startPoint: "Central Park",
-    endPoint: "Downtown Square",
-    distance: 15,
-    difficulty: "Easy",
-    createdBy: {
-      id: "user1",
-      name: "John Doe",
-      avatar: "/placeholder.svg?height=40&width=40",
-    },
-    participants: 8,
-    maxParticipants: 15,
-    isPrivate: false,
-    route: {
-      id: "route1",
-      name: "Downtown Loop",
-    },
-  },
-  {
-    id: "2",
-    title: "Weekend Mountain Trail",
-    description: "Challenging mountain trails for experienced riders",
-    startTime: "2025-03-27T09:00:00",
-    finishTime: "2025-03-27T14:00:00",
-    startPoint: "Mountain Base Station",
-    endPoint: "Summit Viewpoint",
-    distance: 35,
-    difficulty: "Hard",
-    createdBy: {
-      id: "user2",
-      name: "Jane Smith",
-      avatar: "/placeholder.svg?height=40&width=40",
-    },
-    participants: 5,
-    maxParticipants: 10,
-    isPrivate: true,
-    route: {
-      id: "route2",
-      name: "Mountain Challenge",
-    },
-  },
-  {
-    id: "3",
-    title: "Sunset Beach Cruise",
-    description: "Relaxing ride along the coastline with beautiful sunset views",
-    startTime: "2025-03-26T17:00:00",
-    finishTime: "2025-03-26T19:30:00",
-    startPoint: "Beach Parking Lot",
-    endPoint: "Lighthouse Point",
-    distance: 20,
-    difficulty: "Medium",
-    createdBy: {
-      id: "user3",
-      name: "Alex Johnson",
-      avatar: "/placeholder.svg?height=40&width=40",
-    },
-    participants: 12,
-    maxParticipants: 20,
-    isPrivate: false,
-    route: {
-      id: "route3",
-      name: "Coastal Route",
-    },
-  },
-  {
-    id: "4",
-    title: "City Night Ride",
-    description: "Explore the city lights on this evening group ride",
-    startTime: "2025-03-28T20:00:00",
-    finishTime: "2025-03-28T22:00:00",
-    startPoint: "City Hall",
-    endPoint: "Riverside Park",
-    distance: 18,
-    difficulty: "Easy",
-    createdBy: {
-      id: "user4",
-      name: "Sam Wilson",
-      avatar: "/placeholder.svg?height=40&width=40",
-    },
-    participants: 15,
-    maxParticipants: 25,
-    isPrivate: false,
-    route: {
-      id: "route4",
-      name: "City Lights Tour",
-    },
-  },
-]
-
 export function GroupRideList() {
+  const [groupRides, setGroupRides] = useState<any[]>([])
   const [searchQuery, setSearchQuery] = useState("")
   const [selectedRide, setSelectedRide] = useState<any>(null)
   const [joinDialogOpen, setJoinDialogOpen] = useState(false)
   const [activeFilter, setActiveFilter] = useState("all")
+  const [password, setPassword] = useState("")
 
-  const filteredRides = mockGroupRides.filter((ride) => {
+
+  useEffect(() => {
+    const fetchGroupRides = async () => {
+      try {
+        const response = await axios.get("http://localhost:8080/api/group-rides")
+        setGroupRides(response.data)
+      } catch (error) {
+        console.error("Error fetching group rides:", error)
+      }
+    }
+    fetchGroupRides()
+  }, [])
+
+
+
+  const filteredRides = groupRides.filter((ride) => {
     const matchesSearch =
       ride.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       ride.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -120,44 +40,9 @@ export function GroupRideList() {
     return matchesSearch
   })
 
-  const formatDate = (dateString: string) => {
-    const date = new Date(dateString)
-    return date.toLocaleDateString("vi-VN", {
-      weekday: "long",
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    })
-  }
-
-  const formatTime = (dateString: string) => {
-    const date = new Date(dateString)
-    return date.toLocaleTimeString("vi-VN", {
-      hour: "2-digit",
-      minute: "2-digit",
-    })
-  }
-
-  const handleJoinRide = (ride: any) => {
-    setSelectedRide(ride)
-    setJoinDialogOpen(true)
-  }
-
-  const getBadgeVariant = (difficulty: string) => {
-    switch (difficulty) {
-      case "Easy":
-        return "success"
-      case "Medium":
-        return "warning"
-      case "Hard":
-        return "danger"
-      default:
-        return "secondary"
-    }
-  }
-
   return (
     <div className="mt-4">
+      {/* Search and Filter UI */}
       <Row className="mb-4">
         <Col md={8}>
           <InputGroup>
@@ -200,6 +85,7 @@ export function GroupRideList() {
         </Col>
       </Row>
 
+      {/* Display filtered group rides */}
       {filteredRides.length === 0 ? (
         <div className="text-center py-5">
           <p className="text-muted">No group rides found matching your search criteria.</p>
@@ -228,12 +114,12 @@ export function GroupRideList() {
                   <div className="mb-3">
                     <div className="d-flex align-items-center gap-2 mb-2">
                       <Calendar size={16} className="text-muted" />
-                      <small>{formatDate(ride.startTime)}</small>
+                      <small>{new Date(ride.startTime).toLocaleDateString()}</small>
                     </div>
                     <div className="d-flex align-items-center gap-2 mb-2">
                       <Clock size={16} className="text-muted" />
                       <small>
-                        {formatTime(ride.startTime)} - {formatTime(ride.finishTime)}
+                        {new Date(ride.startTime).toLocaleTimeString()} - {new Date(ride.finishTime).toLocaleTimeString()}
                       </small>
                     </div>
                     <div className="d-flex align-items-center gap-2 mb-2">
@@ -249,7 +135,7 @@ export function GroupRideList() {
                       </small>
                     </div>
                     <div className="d-flex gap-2 mt-3">
-                      <Badge bg={getBadgeVariant(ride.difficulty)}>{ride.difficulty}</Badge>
+                      <Badge bg="success">{ride.difficulty}</Badge>
                       <Badge bg="secondary">{ride.distance} km</Badge>
                     </div>
                   </div>
@@ -279,16 +165,23 @@ export function GroupRideList() {
         </Row>
       )}
 
+      {/* Modal for joining a ride */}
       <Modal show={joinDialogOpen} onHide={() => setJoinDialogOpen(false)}>
         <Modal.Header closeButton>
           <Modal.Title>Join {selectedRide?.title}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <p className="text-muted">Enter the required information to join this group ride.</p>
-          {selectedRide && <JoinRideForm ride={selectedRide} onJoinSuccess={() => setJoinDialogOpen(false)} />}
+          {selectedRide && (
+            <JoinRideForm
+              ride={selectedRide}
+              onJoinSuccess={() => setJoinDialogOpen(false)}
+              onPasswordChange={(e) => setPassword(e.target.value)}  // Set password if ride is private
+              password={password}  // Pass password to the form
+            />
+          )}
         </Modal.Body>
       </Modal>
     </div>
   )
 }
-

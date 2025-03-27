@@ -6,16 +6,17 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
 import { Form, Row, Col, Card, Button, InputGroup, Alert } from "react-bootstrap"
 import { MapPin, Clock, CheckCircle2 } from "lucide-react"
+import axios from "axios"
 
 const formSchema = z.object({
-  username: z.string().min(3, { message: "Tên người dùng phải có ít nhất 3 ký tự" }),
-  route_length: z.coerce.number().min(1, { message: "Khoảng cách phải ít nhất 1 km" }),
-  estimated_time: z.coerce.number().min(0.5, { message: "Thời gian ước tính phải ít nhất 0.5 giờ" }),
-  difficulty: z.string({ required_error: "Vui lòng chọn độ khó" }),
-  start_location: z.string().min(3, { message: "Điểm xuất phát là bắt buộc" }),
-  destination: z.string().min(3, { message: "Điểm đến là bắt buộc" }),
-  location: z.string().min(2, { message: "Vị trí là bắt buộc" }),
-  route_type: z.string({ required_error: "Vui lòng chọn loại đường đi" }),
+  username: z.string().min(3, { message: "Username must be at least 3 characters" }),
+  route_length: z.coerce.number().min(1, { message: "Distance must be at least 1 km" }),
+  estimated_time: z.coerce.number().min(0.5, { message: "Estimated time should be at least 0.5 hour" }),
+  difficulty: z.string({ required_error: "Please select difficulty" }),
+  start_location: z.string().min(3, { message: "The starting point is required" }),
+  destination: z.string().min(3, { message: "Destination is required" }),
+  location: z.string().min(2, { message: "Location is required" }),
+  route_type: z.string({ required_error: "Please select route type" }),
 })
 
 export function CreateRouteForm() {
@@ -45,15 +46,13 @@ export function CreateRouteForm() {
     },
   })
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    // Tạo dữ liệu Routes
+  const onSubmit = async (values: z.infer<typeof formSchema>) => {
     const routeData = {
       ...values,
     }
 
-    // Tạo dữ liệu RouteDetail
     const routeDetailData = {
-      route_id: 1, // Giả sử ID mới
+      route_id: 1,
       route_type: values.route_type,
       path_data: pathData,
     }
@@ -61,15 +60,26 @@ export function CreateRouteForm() {
     console.log("Route Data:", routeData)
     console.log("Route Detail Data:", routeDetailData)
 
-    // Đây là nơi bạn sẽ gửi dữ liệu đến API
-    setIsSubmitted(true)
+    try {
 
-    // Reset form sau 3 giây
-    setTimeout(() => {
-      setIsSubmitted(false)
-    }, 3000)
+      const response = await axios.post("http://localhost:8080/api/routes", routeData)
+      console.log("Route created successfully:", response.data)
+
+
+      const detailResponse = await axios.post("http://localhost:8080/api/routes/detail", routeDetailData)
+      console.log("Route Detail created successfully:", detailResponse.data)
+
+      setIsSubmitted(true)
+
+
+      setTimeout(() => {
+        setIsSubmitted(false)
+      }, 3000)
+    } catch (error) {
+      console.error("Error creating Route:", error)
+      alert("An error occurred while creating the route.")
+    }
   }
-
   // Giả lập thêm điểm vào path_data
   const addRandomPoint = () => {
     // Tạo một điểm ngẫu nhiên giữa Hà Nội và Hạ Long
@@ -87,7 +97,7 @@ export function CreateRouteForm() {
           <CheckCircle2 size={20} />
           <strong>Thành công!</strong>
         </div>
-        <p className="mb-0 mt-2">Tuyến đường của bạn đã được tạo thành công và sẵn sàng để chia sẻ.</p>
+        <p className="mb-0 mt-2">Your route has been successfully created and is ready to share.</p>
       </Alert>
     )
   }
@@ -95,15 +105,15 @@ export function CreateRouteForm() {
   return (
     <Card className="mt-4">
       <Card.Header>
-        <Card.Title>Tạo tuyến đường mới</Card.Title>
-        <Card.Text className="text-muted">Chia sẻ tuyến đường đạp xe yêu thích của bạn với cộng đồng</Card.Text>
+        <Card.Title>Create new route</Card.Title>
+        <Card.Text className="text-muted">Share your favorite cycling routes with the community</Card.Text>
       </Card.Header>
       <Card.Body>
         <Form onSubmit={handleSubmit(onSubmit)}>
           <Row className="mb-3">
             <Col md={6}>
               <Form.Group className="mb-3">
-                <Form.Label>Tên người dùng</Form.Label>
+                <Form.Label>Username</Form.Label>
                 <Form.Control
                   type="text"
                   placeholder="johndoe"
@@ -117,12 +127,12 @@ export function CreateRouteForm() {
             </Col>
             <Col md={6}>
               <Form.Group className="mb-3">
-                <Form.Label>Loại đường đi</Form.Label>
+                <Form.Label>Type of path</Form.Label>
                 <Form.Select isInvalid={!!errors.route_type} {...register("route_type")}>
-                  <option value="">Chọn loại đường đi</option>
-                  <option value="Nhanh nhất">Nhanh nhất (đường cao tốc)</option>
-                  <option value="Ven biển">Ven biển (đẹp nhất)</option>
-                  <option value="Ít xe cộ">Ít xe cộ</option>
+                  <option value="">Select route type</option>
+                  <option value="Nhanh nhất">Fastest (highway)</option>
+                  <option value="Ven biển">Coastal (most beautiful)</option>
+                  <option value="Ít xe cộ">Less traffic</option>
                 </Form.Select>
                 {errors.route_type && (
                   <Form.Control.Feedback type="invalid">{errors.route_type.message}</Form.Control.Feedback>
@@ -134,7 +144,7 @@ export function CreateRouteForm() {
           <Row className="mb-3">
             <Col md={6}>
               <Form.Group className="mb-3">
-                <Form.Label>Điểm xuất phát</Form.Label>
+                <Form.Label>Starting point</Form.Label>
                 <InputGroup>
                   <InputGroup.Text>
                     <MapPin size={16} />
@@ -153,7 +163,7 @@ export function CreateRouteForm() {
             </Col>
             <Col md={6}>
               <Form.Group className="mb-3">
-                <Form.Label>Điểm đến</Form.Label>
+                <Form.Label>Destination</Form.Label>
                 <InputGroup>
                   <InputGroup.Text>
                     <MapPin size={16} />
@@ -175,7 +185,7 @@ export function CreateRouteForm() {
           <Row className="mb-3">
             <Col md={4}>
               <Form.Group className="mb-3">
-                <Form.Label>Khoảng cách (km)</Form.Label>
+                <Form.Label>Distance (km)</Form.Label>
                 <InputGroup>
                   <Form.Control
                     type="number"
@@ -194,7 +204,7 @@ export function CreateRouteForm() {
             </Col>
             <Col md={4}>
               <Form.Group className="mb-3">
-                <Form.Label>Thời gian ước tính (giờ)</Form.Label>
+                <Form.Label>Estimated time (hours)</Form.Label>
                 <InputGroup>
                   <InputGroup.Text>
                     <Clock size={16} />
@@ -207,7 +217,7 @@ export function CreateRouteForm() {
                     isInvalid={!!errors.estimated_time}
                     {...register("estimated_time")}
                   />
-                  <InputGroup.Text>giờ</InputGroup.Text>
+                  <InputGroup.Text>hour</InputGroup.Text>
                 </InputGroup>
                 {errors.estimated_time && (
                   <Form.Control.Feedback type="invalid">{errors.estimated_time.message}</Form.Control.Feedback>
@@ -216,7 +226,7 @@ export function CreateRouteForm() {
             </Col>
             <Col md={4}>
               <Form.Group className="mb-3">
-                <Form.Label>Vị trí</Form.Label>
+                <Form.Label>Location</Form.Label>
                 <Form.Control
                   type="text"
                   placeholder="Vietnam"
@@ -233,12 +243,12 @@ export function CreateRouteForm() {
           <Row className="mb-3">
             <Col md={6}>
               <Form.Group className="mb-3">
-                <Form.Label>Độ khó</Form.Label>
+                <Form.Label>Difficulty</Form.Label>
                 <Form.Select isInvalid={!!errors.difficulty} {...register("difficulty")}>
-                  <option value="">Chọn độ khó</option>
-                  <option value="easy">Dễ</option>
-                  <option value="medium">Trung bình</option>
-                  <option value="hard">Khó</option>
+                  <option value="">Select difficulty</option>
+                  <option value="easy">Easy</option>
+                  <option value="medium">Medium</option>
+                  <option value="hard">Difficult</option>
                 </Form.Select>
                 {errors.difficulty && (
                   <Form.Control.Feedback type="invalid">{errors.difficulty.message}</Form.Control.Feedback>
@@ -249,20 +259,20 @@ export function CreateRouteForm() {
 
           <Card className="mb-3">
             <Card.Body>
-              <Card.Title className="mb-3">Dữ liệu tọa độ GPS (path_data)</Card.Title>
+              <Card.Title className="mb-3">GPS coordinate data (path_data)</Card.Title>
               <div className="bg-light border rounded p-3" style={{ maxHeight: "200px", overflow: "auto" }}>
                 <pre className="mb-0">{JSON.stringify(pathData, null, 2)}</pre>
               </div>
               <div className="mt-3 d-flex gap-2">
                 <Button variant="outline-primary" onClick={addRandomPoint}>
-                  Thêm điểm ngẫu nhiên
+                  Add random points
                 </Button>
                 <Button
                   variant="outline-secondary"
                   onClick={() => setPathData(pathData.slice(0, -1))}
                   disabled={pathData.length <= 2}
                 >
-                  Xóa điểm cuối
+                  Delete endpoint
                 </Button>
               </div>
             </Card.Body>
@@ -270,16 +280,16 @@ export function CreateRouteForm() {
 
           <Card className="mb-3">
             <Card.Body>
-              <Card.Title className="mb-3">Bản đồ tuyến đường</Card.Title>
+              <Card.Title className="mb-3">Route map</Card.Title>
               <div
                 className="bg-light border rounded"
                 style={{ height: "300px", display: "flex", alignItems: "center", justifyContent: "center" }}
               >
-                <p className="text-muted">Giao diện bản đồ sẽ hiển thị ở đây</p>
+                <p className="text-muted">The map interface will be displayed here.</p>
               </div>
               <div className="mt-3">
                 <Form.Group>
-                  <Form.Label>Tải lên file GPX</Form.Label>
+                  <Form.Label>Upload GPX file</Form.Label>
                   <Form.Control type="file" accept=".gpx" />
                 </Form.Group>
               </div>
@@ -288,7 +298,7 @@ export function CreateRouteForm() {
 
           <div className="d-grid gap-2 mt-4">
             <Button variant="primary" type="submit">
-              Tạo tuyến đường
+              Create Route
             </Button>
           </div>
         </Form>

@@ -8,6 +8,30 @@ import { Form, Row, Col, Card, Button, InputGroup, Alert } from "react-bootstrap
 import { CalendarIcon, Clock, MapPin, Users, Lock, CheckCircle2 } from "lucide-react"
 import DatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css"
+import axios from "axios";
+
+const onSubmit = async (values: z.infer<typeof formSchema>) => {
+  console.log("Submitted Ride:", values)
+
+
+  try {
+    const response = await axios.post("http://localhost:8080/api/group-rides", values)
+
+    console.log("Group Ride created successfully:", response.data)
+    const updatedRidesResponse = await axios.get("http://localhost:8080/api/group-rides")
+    setGroupRides(updatedRidesResponse.data)
+
+    setIsSubmitted(true)
+    setTimeout(() => {
+      setIsSubmitted(false)
+    }, 3000)
+  } catch (error) {
+    console.error("Error creating Group Ride:", error)
+    alert("An error occurred while creating the group ride.")
+  }
+}
+
+
 
 // Define the type for Route
 type Route = {
@@ -86,85 +110,85 @@ export function CreateRideForm() {
   const handleDateChange = (date: Date | null) => {
     setSelectedDate(date)
     if (date) setValue("date", date)
-    }
-  
-    if (isSubmitted) {
-      return (
-        <Alert variant="success" className="mt-4">
-          <div className="d-flex align-items-center gap-2">
-            <CheckCircle2 size={20} />
-            <strong>Success!</strong>
-          </div>
-          <p className="mb-0 mt-2">Your group ride has been created successfully. Riders can now join your group.</p>
-        </Alert>
-      )
-    }
-  
+  }
+
+  if (isSubmitted) {
     return (
-      <Card className="mt-4">
-        <Card.Header>
-          <Card.Title>Create a New Group Ride</Card.Title>
-          <Card.Text className="text-muted">
-            Set up a new group ride for cyclists to join. Fill in the details below.
-          </Card.Text>
-        </Card.Header>
-        <Card.Body>
-          <Form onSubmit={handleSubmit(onSubmit)}>
-            {/* Title & Description */}
-            <Row className="mb-3">
-              <Col md={12}>
-                <Form.Group className="mb-3">
-                  <Form.Label>Ride Title</Form.Label>
-                  <Form.Control
-                    type="text"
-                    placeholder="Morning City Ride"
-                    isInvalid={!!errors.title}
-                    {...register("title")}
+      <Alert variant="success" className="mt-4">
+        <div className="d-flex align-items-center gap-2">
+          <CheckCircle2 size={20} />
+          <strong>Success!</strong>
+        </div>
+        <p className="mb-0 mt-2">Your group ride has been created successfully. Riders can now join your group.</p>
+      </Alert>
+    )
+  }
+
+  return (
+    <Card className="mt-4">
+      <Card.Header>
+        <Card.Title>Create a New Group Ride</Card.Title>
+        <Card.Text className="text-muted">
+          Set up a new group ride for cyclists to join. Fill in the details below.
+        </Card.Text>
+      </Card.Header>
+      <Card.Body>
+        <Form onSubmit={handleSubmit(onSubmit)}>
+          {/* Title & Description */}
+          <Row className="mb-3">
+            <Col md={12}>
+              <Form.Group className="mb-3">
+                <Form.Label>Ride Title</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Morning City Ride"
+                  isInvalid={!!errors.title}
+                  {...register("title")}
+                />
+                <Form.Control.Feedback type="invalid">{errors.title?.message}</Form.Control.Feedback>
+              </Form.Group>
+            </Col>
+            <Col md={12}>
+              <Form.Group className="mb-3">
+                <Form.Label>Description</Form.Label>
+                <Form.Control
+                  as="textarea"
+                  rows={3}
+                  placeholder="Describe your ride..."
+                  isInvalid={!!errors.description}
+                  {...register("description")}
+                />
+                <Form.Control.Feedback type="invalid">{errors.description?.message}</Form.Control.Feedback>
+              </Form.Group>
+            </Col>
+          </Row>
+
+          {/* Date, Time */}
+          <Row className="mb-3">
+            <Col md={6}>
+              <Form.Group className="mb-3">
+                <Form.Label>Date</Form.Label>
+                <InputGroup>
+                  <InputGroup.Text><CalendarIcon size={16} /></InputGroup.Text>
+                  <DatePicker
+                    selected={selectedDate}
+                    onChange={handleDateChange}
+                    minDate={new Date()}
+                    placeholderText="Select date"
+                    className="form-control"
+                    wrapperClassName="w-100"
                   />
-                  <Form.Control.Feedback type="invalid">{errors.title?.message}</Form.Control.Feedback>
-                </Form.Group>
-              </Col>
-              <Col md={12}>
-                <Form.Group className="mb-3">
-                  <Form.Label>Description</Form.Label>
-                  <Form.Control
-                    as="textarea"
-                    rows={3}
-                    placeholder="Describe your ride..."
-                    isInvalid={!!errors.description}
-                    {...register("description")}
-                  />
-                  <Form.Control.Feedback type="invalid">{errors.description?.message}</Form.Control.Feedback>
-                </Form.Group>
-              </Col>
-            </Row>
-  
-            {/* Date, Time */}
-            <Row className="mb-3">
-              <Col md={6}>
-                <Form.Group className="mb-3">
-                  <Form.Label>Date</Form.Label>
-                  <InputGroup>
-                    <InputGroup.Text><CalendarIcon size={16} /></InputGroup.Text>
-                    <DatePicker
-                      selected={selectedDate}
-                      onChange={handleDateChange}
-                      minDate={new Date()}
-                      placeholderText="Select date"
-                      className="form-control"
-                      wrapperClassName="w-100"
-                    />
-                  </InputGroup>
-                  {errors.date && <div className="text-danger mt-1 small">{errors.date.message}</div>}
-                </Form.Group>
-              </Col>
-              <Col md={3}>
-                <Form.Group className="mb-3">
-                  <Form.Label>Start Time</Form.Label>
-                  <InputGroup>
-                    <InputGroup.Text><Clock size={16} /></InputGroup.Text>
-                    <Form.Control type="time" isInvalid={!!errors.startTime} {...register("startTime")} />
-                    </InputGroup>
+                </InputGroup>
+                {errors.date && <div className="text-danger mt-1 small">{errors.date.message}</div>}
+              </Form.Group>
+            </Col>
+            <Col md={3}>
+              <Form.Group className="mb-3">
+                <Form.Label>Start Time</Form.Label>
+                <InputGroup>
+                  <InputGroup.Text><Clock size={16} /></InputGroup.Text>
+                  <Form.Control type="time" isInvalid={!!errors.startTime} {...register("startTime")} />
+                </InputGroup>
                 <Form.Control.Feedback type="invalid">{errors.startTime?.message}</Form.Control.Feedback>
               </Form.Group>
             </Col>
