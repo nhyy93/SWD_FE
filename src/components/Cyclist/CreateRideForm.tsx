@@ -8,6 +8,30 @@ import { Form, Row, Col, Card, Button, InputGroup, Alert } from "react-bootstrap
 import { CalendarIcon, Clock, MapPin, Users, Lock, CheckCircle2 } from "lucide-react"
 import DatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css"
+import axios from "axios";
+
+const onSubmit = async (values: z.infer<typeof formSchema>) => {
+  console.log("Submitted Ride:", values)
+
+
+  try {
+    const response = await axios.post("http://localhost:8080/api/group-rides", values)
+
+    console.log("Group Ride created successfully:", response.data)
+    const updatedRidesResponse = await axios.get("http://localhost:8080/api/group-rides")
+    setGroupRides(updatedRidesResponse.data)
+
+    setIsSubmitted(true)
+    setTimeout(() => {
+      setIsSubmitted(false)
+    }, 3000)
+  } catch (error) {
+    console.error("Error creating Group Ride:", error)
+    alert("An error occurred while creating the group ride.")
+  }
+}
+
+
 
 // Define the type for Route
 type Route = {

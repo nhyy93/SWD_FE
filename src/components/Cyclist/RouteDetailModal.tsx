@@ -3,6 +3,8 @@
 import { Modal, Button, Badge, Row, Col, ListGroup, Tab, Nav, Alert } from "react-bootstrap"
 import { MapPin, Clock, BarChart2, User, Heart, Share2 } from "lucide-react"
 import { RouteComments } from "./RouteComments"
+import axios from "axios"
+
 
 interface RouteData {
   route_id: number
@@ -29,7 +31,26 @@ interface RouteDetailsModalProps {
   routeDetail: RouteDetailData | null
 }
 
-export function RouteDetailsModal({ show, onHide, route, routeDetail }: RouteDetailsModalProps) {
+export function RouteDetailsModal({ show, onHide, route }: RouteDetailsModalProps) {
+  const [routeDetail, setRouteDetail] = useState<RouteDetailData | null>(null)
+  const [error, setError] = useState<string | null>(null)
+
+  useEffect(() => {
+    const fetchRouteDetails = async () => {
+      try {
+        const response = await axios.get(`http://localhost:8080/api/route-details/route/${route.route_id}`)
+        setRouteDetail(response.data[0]) // Assuming the response is a list and we take the first item
+      } catch (error) {
+        console.error("Error fetching route details:", error)
+        setError("Failed to load route details.")
+      }
+    }
+
+    if (show) {
+      fetchRouteDetails()
+    }
+  }, [show, route.route_id])
+
   const getBadgeVariant = (difficulty: string) => {
     switch (difficulty.toLowerCase()) {
       case "easy":

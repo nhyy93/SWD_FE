@@ -6,6 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
 import { Form, Button, Alert } from "react-bootstrap"
 import { CheckCircle2, AlertCircle } from "lucide-react"
+import axios from "axios"
 
 const formSchema = z.object({
   password: z.string().optional(),
@@ -31,48 +32,49 @@ export function JoinRideForm({ ride, onJoinSuccess }: JoinRideFormProps) {
     },
   })
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    // Reset error state
+  const joinGroupRide = async (groupRideId: number, password?: string) => {
+    try {
+      const response = await axios.post(
+        `http://localhost:8080/api/group-ride-joiners/join/${groupRideId}`,
+        null,
+        { params: { password } }
+      )
+      console.log("Successfully joined the group ride:", response.data)
+      setIsSubmitted(true)
+
+      setTimeout(() => {
+        onJoinSuccess()
+      }, 2000)
+    } catch (error) {
+      console.error("Error joining group ride:", error)
+      setError("There was an error joining the ride. Please try again.")
+    }
+  }
+
+  const onSubmit = (values: z.infer<typeof formSchema>) => {
+
     setError(null)
 
-    // Check if the ride is private and requires a password
+
     if (ride.isPrivate) {
-      // In a real app, you would validate this against the backend
-      // For this demo, we'll just check if any password was provided
+
       if (!values.password) {
         setError("Password is required for private rides")
         return
       }
 
-      // Simulate password validation (in a real app, this would be done on the server)
+
       if (values.password !== "password123") {
-        // Just a dummy check
+
         setError("Incorrect password")
         return
       }
     }
 
-    // If we get here, the join was successful
-    console.log("Joining ride:", ride.id)
-    setIsSubmitted(true)
 
-    // Close the dialog after a delay
-    setTimeout(() => {
-      onJoinSuccess()
-    }, 2000)
+    joinGroupRide(ride.id, values.password)
   }
 
-  if (isSubmitted) {
-    return (
-      <Alert variant="success" className="mt-3">
-        <div className="d-flex align-items-center gap-2">
-          <CheckCircle2 size={16} />
-          <strong>Success!</strong>
-        </div>
-        <p className="mb-0 mt-2">You have successfully joined the ride. Check your profile for details.</p>
-      </Alert>
-    )
-  }
 
   return (
     <div className="py-2">

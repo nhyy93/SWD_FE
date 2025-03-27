@@ -75,6 +75,9 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/profile" element={<Profile />} />
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> cyclist-nhi
         <Route path="/saved" element={<SavedRoutes />} />
         <Route path="/blogs" element={<ManageBlogs />} />
         <Route path="/group-ride" element={<GroupRidePage />} />
@@ -83,11 +86,17 @@ function App() {
         <Route path="/cart" element={<MyCartPage />} />
         <Route path="/transactions" element={<TransactionHistoryPage />} />
         {/* Shop Owner Routes */}
+<<<<<<< HEAD
 =======
         <Route path="/product/:id" element={<ProductDetail />} />
 
 
 >>>>>>> main
+=======
+        <Route path="/product/:id" element={<ProductDetail />} />
+
+
+>>>>>>> cyclist-nhi
         <Route path="/shop-owner/*" element={<ShopOwnerLayout />}>
           <Route path="account" element={<AccountManagement />} />
           <Route path="orders" element={<OrderManagement />} />
@@ -106,6 +115,9 @@ function App() {
         {/* Cyclist Routes */}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> cyclist-nhi
         <Route path="/route-sharing" element={<RouteSharingPage />} />
         <Route path="/book-services" element={<BookServicesPage />} />
         <Route path="/buy-product" element={<BuyProductPage />} />
@@ -113,8 +125,11 @@ function App() {
         <Route path="/shop-services" element={<ShopServicesPage />} />
         <Route path="/communication" element={<CommunicationPage />} />
         {/* Redirect Unknown Routes to Home */}
+<<<<<<< HEAD
 =======
 >>>>>>> main
+=======
+>>>>>>> cyclist-nhi
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </Router>
