@@ -43,6 +43,7 @@ import OrderStatusPage from "./pages/Customer/OrderStatusPage";
 import MyCartPage from "./pages/Customer/MyCartPage";
 import TransactionHistoryPage from "./pages/Customer/TransactionHistoryPage";
 import ProductManagement from "./pages/ShopOwner/ProductManagement";
+import CreateShop from "./pages/Customer/CreateShop";
 
 
 function App() {
@@ -97,6 +98,7 @@ function App() {
         {/* Cyclist Routes */}
 
         <Route path="/route-sharing" element={<RouteSharingPage />} />
+        <Route path="/create-shop" element={<CreateShop />} />
         <Route path="/book-services" element={<BookServicesPage />} />
         <Route path="/buy-product" element={<BuyProductPage />} />
         <Route path="/find-shop" element={<FindShopsPage />} />
