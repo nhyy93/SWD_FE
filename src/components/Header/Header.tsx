@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./Header.module.css";
-import { FaUserCircle, FaShoppingCart } from "react-icons/fa";
+import { FaUserCircle, FaShoppingCart, FaStore } from "react-icons/fa";
 
 const AppHeader: React.FC = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
+  const [role, setRole] = useState("");
   const [showDropdown, setShowDropdown] = useState(false);
   const navigate = useNavigate();
-  const [role, setRole] = useState("");
-
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -30,7 +29,6 @@ const AppHeader: React.FC = () => {
       setRole("");
     }
   }, []);
-
 
   const handleLogout = () => {
     localStorage.clear();
@@ -56,10 +54,19 @@ const AppHeader: React.FC = () => {
       <div className={styles.authButtons}>
         {isLoggedIn ? (
           <div className={styles.profileCartSection}>
+            {/* Nút Giỏ hàng */}
             <Link to="/cart" className={styles.cartIcon}>
               <FaShoppingCart size={24} />
             </Link>
 
+            {/* Hiển thị nút "Create Shop" nếu user có role "CYCLIST" */}
+            {role === "CYCLIST" && (
+              <Link to="/create-shop" className={styles.createShopButton}>
+                <FaStore size={22} /> Create Shop
+              </Link>
+            )}
+
+            {/* Avatar User */}
             <div
               className={styles.profileIcon}
               onClick={() => setShowDropdown(!showDropdown)}
@@ -67,6 +74,7 @@ const AppHeader: React.FC = () => {
               <FaUserCircle size={28} />
             </div>
 
+            {/* Dropdown Menu */}
             {showDropdown && (
               <div className={styles.dropdownMenu}>
                 <p className={styles.username}>{username}</p>
@@ -87,7 +95,6 @@ const AppHeader: React.FC = () => {
                     View Profile
                   </Link>
                 )}
-
 
                 <button onClick={handleLogout} className={styles.logoutBtn}>
                   Logout
